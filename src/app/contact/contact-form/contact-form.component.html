@@ -1,0 +1,142 @@
+<!--<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">CONTACT_FORM</a>
+    </div>
+  </div>
+</nav>
+<form [formGroup]="contactForm">
+  <button type="button" class="btn btn-primary" (click)="addContact()">Add Contact</button>
+  <div formArrayName="contacts">
+    <div *ngFor="let contactFormGroup of contactFormGroups.controls;  let i = index" [formGroupName]="i">
+      <div class="row">
+        <div class="col-12">
+          <h3>Contact {{i+1}}</h3>
+          <button type="button" class="btn btn-primary float-right" (click)="removeContact(i)">REMOVE</button>
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col-6 ">
+          <label>First Name <small>*</small></label>
+          <input type="text" class="form-control" formControlName="fname">
+          <p>
+            <small *ngIf="contactForm.get(['contacts', i, 'fname']).errors?.required && formSubmitted">First Name is
+              required</small>
+          </p>
+        </div>
+        <div class="col-6">
+          <label>Last Name</label>
+          <input type="text" class="form-control" formControlName="lname">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <label>Email <small>*</small></label>
+          <input type="text" class="form-control" formControlName="email">
+          <p>
+            <small *ngIf="contactForm.get(['contacts', i, 'email']).errors?.required && formSubmitted">Email is
+              required</small>
+            <small *ngIf="contactForm.get(['contacts', i, 'email']).errors?.email">Please enter a valid Email</small>
+          </p>
+        </div>
+        <div class="col-6">
+          <label>Phone</label>
+          <input type="text" class="form-control" formControlName="phone">
+        </div>
+      </div>
+    </div>
+ 
+  
+  <div>
+    <p></p>
+    <button type="submit" class="btn btn-primary" (click)="onSubmit()">Save</button>
+  </div></div>-->
+
+  
+  <div class="container">  
+    <nav class="navbar navbar-inverse navbar-dark bg-dark">
+  <div class="container-fluid">
+    <div class="navbar-header ">
+      <a class="navbar-brand" href="#">CONTACT_FORM</a>
+    </div>
+      <ul class="nav navbar-nav navbar-right ">
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+      <form class="navbar-form navbar-left" action="/action_page.php">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        
+      </form>
+    
+   
+  </div>
+</nav>
+        
+     
+    <form [formGroup]="contactForm">
+      <button type="button" class="btn btn-primary" (click)="addContact()">Add Contact</button>
+      <div formArrayName="contacts">
+    <ngb-tabset [destroyOnHide]="false">
+      
+        
+      <ngb-tab *ngFor="let contactFormGroup of contactFormGroups.controls;  let i = index " [formGroupName]="i" title="contact{{i+1}}">  
+        
+         <ng-template ngbTabContent> 
+          
+          <div class="row">
+            <div class="col-12">
+              <button><i  class="fa fa-trash" (click)="removeContact(i)"></i></button>
+              
+              <h3>Contact {{i+1}}</h3>
+              <button type="button" class="btn btn-primary float-right" (click)="removeContact(i)">REMOVE</button>
+            </div>
+    
+          </div>
+          <div class="row">
+            <div class="col-6 ">
+              <label>First Name <small>*</small></label>
+              <input type="text" class="form-control" formControlName="fname">
+              <p>
+                <small *ngIf="contactForm.get(['contacts', i, 'fname']).errors?.required && formSubmitted">First Name is
+                  required</small>
+              </p>
+            </div>
+            <div class="col-6">
+              <label>Last Name</label>
+              <input type="text" class="form-control" formControlName="lname">
+            </div>
+          </div>
+    
+          <div class="row">
+            <div class="col-6">
+              <label>Email <small>*</small></label>
+              <input type="text" class="form-control" formControlName="email">
+              <p>
+                <small *ngIf="contactForm.get(['contacts', i, 'email']).errors?.required && formSubmitted">Email is
+                  required</small>
+                <small *ngIf="contactForm.get(['contacts', i, 'email']).errors?.email">Please enter a valid Email</small>
+              </p>
+            </div>
+            <div class="col-6">
+              <label>Phone</label>
+              <input type="text" class="form-control" formControlName="phone">
+            </div>
+          </div>
+          <div>
+            <p></p>
+            <button type="submit" class="btn btn-primary" (click)="onSubmit()">Save</button>
+          </div>
+         
+         
+        </ng-template>  
+      </ngb-tab>  
+    
+         
+    </ngb-tabset>  
+    </div></form>
+    </div>  
+
