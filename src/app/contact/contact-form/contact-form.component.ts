@@ -15,6 +15,7 @@ import {
 export class ContactFormComponent implements OnInit {
   contactForm: FormGroup;
   formSubmitted: boolean=false;
+  mask = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
   
 
   constructor(private fb: FormBuilder) {
@@ -53,13 +54,21 @@ export class ContactFormComponent implements OnInit {
       console.log(this.contactForm.value);
     }
   }
-  removeContact(i: number) {
+  removeContact(contactindex:any) {
     const contacts = this.contactForm.get('contacts') as FormArray;
-    if (contacts.length > 1) {
-      contacts.removeAt(i);
-    } else {
-      contacts.reset();
+    console.log(contactindex, contacts);
+   console.log('form', this.contactForm.get(['contacts', contactindex]));
+   contacts.removeAt(contactindex);
+   
+    
+  }
+  removeTab(contact: any){
+    let contactArrayForm=this.contactForm.get('contacts') as FormArray;
+    if(this.contactForm.get(['contacts', contact])){
+    console.log('form', this.contactForm.get(['contacts', contact]));
+    contactArrayForm.removeAt(contact)
     }
   }
+
   
 }
