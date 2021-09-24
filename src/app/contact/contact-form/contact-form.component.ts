@@ -31,7 +31,7 @@ export class ContactFormComponent implements OnInit {
       'fname': ['', [Validators.required]],
       'lname': [''],
       'email': ['', [Validators.required, Validators.email]],
-      'phone': ['']
+      'phone': ['',[Validators.required,Validators.minLength(10)]]
     });
   }
 
@@ -52,12 +52,7 @@ export class ContactFormComponent implements OnInit {
   }
 
   removeTab(contact: number) {
-    // let contactArrayForm=this.contactForm.get('contacts') as FormArray;
-    // if(this.contactForm.get(['contacts', contact])){
-    // console.log('form', this.contactForm.get(['contacts', contact]));
-    // contactArrayForm.removeAt(contact)
     this.contactFormGroups.removeAt(contact)
-    // }
   }
 
 

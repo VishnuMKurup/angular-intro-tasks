@@ -62,7 +62,12 @@
               </div>
               <div class="col-6">
                 <label>Phone</label>
-                <input type="text" [textMask]="{mask: mask}" class="form-control" formControlName="phone">
+                <input type="text" [textMask]="{mask: mask}" class="form-control" formControlName="phone"   >
+                <p>
+                  <small *ngIf="contactForm.get(['contacts', ind, 'phone']).errors?.required && (contactForm.touched || contactForm.dirty || formSubmitted)">Please enter a valid
+                    phone</small>
+                </p>
+                
               </div>
             </div>
             <div>
