@@ -80,13 +80,13 @@
   <form [formGroup]="contactForm">
     <button type="button" class="btn btn-primary float-right" (click)="addContact()">Add Contact</button>
     <div formArrayName="contacts">
-      <ngb-tabset>
+      <ngb-tabset [destroyOnHide]="false">
 
 
         <ngb-tab *ngFor="let contactFormGroup of contactFormGroups.controls;  let ind = index " [formGroupName]="ind">
 
           <ng-template ngbTabTitle>
-            <i class="fa fa-trash" (click)="removeTab(ind)"></i>
+            <i class="fa fa-trash" (click)="removeTab(ind)" ></i>
             contact{{ind+1}}
           </ng-template>
           <ng-template ngbTabContent>

@@ -14,9 +14,9 @@ import {
 })
 export class ContactFormComponent implements OnInit {
   contactForm: FormGroup;
-  formSubmitted: boolean=false;
+  formSubmitted: boolean = false;
   mask = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
-  
+
 
   constructor(private fb: FormBuilder) {
     // this.contactForm = this.fb.group({
@@ -26,22 +26,32 @@ export class ContactFormComponent implements OnInit {
     //   phone: ['']
     // });
 
+
+  }
+
+  ngOnInit() {
     this.contactForm = this.fb.group({
       contacts: this.fb.array([this.createContactFormGroup()])
     });
   }
 
-  ngOnInit() {}
-
   createContactFormGroup(): FormGroup {
-    return new FormGroup({
-      fname: new FormControl('', Validators.required),
-      lname: new FormControl(''),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      phone: new FormControl('')
+
+    return this.fb.group({
+      'fname': ['', [Validators.required]],
+      'lname': [''],
+      'email': ['', [Validators.required, Validators.email]],
+      'phone': ['']
     });
+    // return new FormGroup({
+    //   fname: new FormControl('', Validators.required),
+    //   lname: new FormControl(''),
+    //   email: new FormControl('', [Validators.required, Validators.email]),
+    //   phone: new FormControl('')
+    // });
+
   }
-  get contactFormGroups () {
+  get contactFormGroups() {
     return this.contactForm.get('contacts') as FormArray
   }
   addContact() {
@@ -54,21 +64,22 @@ export class ContactFormComponent implements OnInit {
       console.log(this.contactForm.value);
     }
   }
-  removeContact(contactindex:any) {
+  removeContact(contactindex: any) {
     const contacts = this.contactForm.get('contacts') as FormArray;
     console.log(contactindex, contacts);
-   console.log('form', this.contactForm.get(['contacts', contactindex]));
-   contacts.removeAt(contactindex);
-   
-    
+    console.log('form', this.contactForm.get(['contacts', contactindex]));
+    contacts.removeAt(contactindex);
+
+
   }
-  removeTab(contact: any){
-    let contactArrayForm=this.contactForm.get('contacts') as FormArray;
-    if(this.contactForm.get(['contacts', contact])){
-    console.log('form', this.contactForm.get(['contacts', contact]));
-    contactArrayForm.removeAt(contact)
-    }
+  removeTab(contact: number) {
+    // let contactArrayForm=this.contactForm.get('contacts') as FormArray;
+    // if(this.contactForm.get(['contacts', contact])){
+    // console.log('form', this.contactForm.get(['contacts', contact]));
+    // contactArrayForm.removeAt(contact)
+    this.contactFormGroups.removeAt(contact)
+    // }
   }
 
-  
+
 }
