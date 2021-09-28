@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { TextMaskModule } from 'angular2-text-mask';
+import { AddressComponent } from './address/address.component';
 
 const appRoutes: Routes = [
   {
@@ -24,7 +25,7 @@ const appRoutes: Routes = [
     NgbModule,
     TextMaskModule
   ],
-  declarations: [AppComponent,  ContactFormComponent],
+  declarations: [AppComponent, AddressComponent, ContactFormComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

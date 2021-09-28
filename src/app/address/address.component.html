@@ -1,0 +1,71 @@
+<!-- 
+<form [formGroup]="contactForm" >
+  <fieldset formGroupName="contactInfo">
+    <div class="row">
+      <div class="col-12">
+        <h3>Contact Information </h3>
+      </div>
+    </div>
+   <div class="row">
+     <div class="col-6">
+    <label>FIRST NAME*:</label>
+    <input type = "text" id="name" class="form-control" name = "fullName" placeholder = "Your full name" formControlName="fullName" >
+    <div *ngIf="contactForm.controls['fullName'].invalid && (contactForm.controls['fullName'].dirty || contactForm.controls['fullName'].touched)  || submitted" class="alert alert-danger">
+      <div *ngIf="contactForm.controls['fullName'].errors.required">
+      Name is required.
+    </div>
+  </div>
+     </div>
+     <div class="col-6">
+  <label>LAST NAME:</label>
+    <input type = "text" class="form-control"  name = "lastName" placeholder = "Your last name" formControlName="lastName" >
+    </div>
+   </div>
+   <div class="row">
+  <div class="col-6">
+  <label>EMAIL*:</label>
+   <input type = "email" class="form-control" name = "email" placeholder = "Your email" formControlName="email" >
+   <div *ngIf="contactForm.controls['email'].invalid && (contactForm.controls['email'].dirty || contactForm.controls['email'].touched)  || submitted" class="alert alert-danger">
+      <div *ngIf="contactForm.controls['email'].errors.required">
+      Email is required.
+    </div>
+  </div>
+   </div>
+   <div class="col-6">
+    <label>PHONE:</label>
+    <input type = "text"  [textMask]="{mask: mask}" class="form-control" name = "phone" placeholder = "Your phone" formControlName="phone" >
+  </div>
+   </div>
+  
+   <input type = "submit"   (ngSubmit)="onSubmit()" [disabled]="!contactForm.valid" class="btn btn-primary" value = "Save">
+  </fieldset>
+  <fieldset fromGroupName="addressGroup">
+    <legend>Address</legend>
+<div class="form-group">
+        <label for="street">Street</label>
+        <input 
+            type="text"  class="form-control" id="street"  formControlName="street">
+    </div>
+    <div class="form-group">
+        <label for="suite">state</label>
+        <input 
+            type="text" class="form-control" id="state" formControlName="state">
+    </div>
+    <div class="form-group">
+        <label for="city">City</label>
+        <input 
+            type="text" class="form-control" id="city"   formControlName="city">
+    </div>
+    <div class="form-group">
+        <label for="zipCode">Zip Code</label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="zipCode" 
+            formControlName="zipCode">
+    </div>
+</fieldset>
+
+<button>Submit</button>
+  
+    </form>  -->
