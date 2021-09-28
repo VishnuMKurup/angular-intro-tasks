@@ -54,6 +54,4 @@ export class ContactFormComponent implements OnInit {
   removeTab(contact: number) {
     this.contactFormGroups.removeAt(contact)
   }
-
-
 }

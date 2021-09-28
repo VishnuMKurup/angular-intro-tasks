@@ -5,14 +5,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
-import { ContactComponent } from './contact/contact.component';
-import { ContactFormComponent } from './contact/contact-form/contact-form.component';
+import { ContactFormComponent } from './contact-form/contact-form.component';
 import { TextMaskModule } from 'angular2-text-mask';
 
 const appRoutes: Routes = [
   {
     path: '',
-    component: ContactComponent
+    component: ContactFormComponent
   }
 ];
 
@@ -24,9 +23,8 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     NgbModule,
     TextMaskModule
-  
   ],
-  declarations: [AppComponent, ContactComponent, ContactFormComponent],
+  declarations: [AppComponent,  ContactFormComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

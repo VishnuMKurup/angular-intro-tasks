@@ -15,7 +15,6 @@
       </form>
     </div>
   </nav>
-
   <form [formGroup]="contactForm">
     <button type="button" class="btn btn-primary float-right" (click)="addContact()">Add Contact</button>
     <div formArrayName="contacts">
@@ -67,7 +66,6 @@
                   <small *ngIf="contactForm.get(['contacts', ind, 'phone']).errors?.required && (contactForm.touched || contactForm.dirty || formSubmitted)">Please enter a valid
                     phone</small>
                 </p>
-                
               </div>
             </div>
             <div>
