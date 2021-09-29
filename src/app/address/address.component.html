@@ -1,71 +1,125 @@
-<!-- 
-<form [formGroup]="contactForm" >
-  <fieldset formGroupName="contactInfo">
-    <div class="row">
-      <div class="col-12">
-        <h3>Contact Information </h3>
+<div class="container">
+  <form [formGroup]="addressForm" (ngSubmit)="onSubmit()">
+    <ng-container formGroupName="contact_information">
+      <div class="row">
+        <div class="col-12">
+          <h3>Contact Information </h3>
+        </div>
       </div>
-    </div>
-   <div class="row">
-     <div class="col-6">
-    <label>FIRST NAME*:</label>
-    <input type = "text" id="name" class="form-control" name = "fullName" placeholder = "Your full name" formControlName="fullName" >
-    <div *ngIf="contactForm.controls['fullName'].invalid && (contactForm.controls['fullName'].dirty || contactForm.controls['fullName'].touched)  || submitted" class="alert alert-danger">
-      <div *ngIf="contactForm.controls['fullName'].errors.required">
-      Name is required.
-    </div>
-  </div>
-     </div>
-     <div class="col-6">
-  <label>LAST NAME:</label>
-    <input type = "text" class="form-control"  name = "lastName" placeholder = "Your last name" formControlName="lastName" >
-    </div>
-   </div>
-   <div class="row">
-  <div class="col-6">
-  <label>EMAIL*:</label>
-   <input type = "email" class="form-control" name = "email" placeholder = "Your email" formControlName="email" >
-   <div *ngIf="contactForm.controls['email'].invalid && (contactForm.controls['email'].dirty || contactForm.controls['email'].touched)  || submitted" class="alert alert-danger">
-      <div *ngIf="contactForm.controls['email'].errors.required">
-      Email is required.
-    </div>
-  </div>
-   </div>
-   <div class="col-6">
-    <label>PHONE:</label>
-    <input type = "text"  [textMask]="{mask: mask}" class="form-control" name = "phone" placeholder = "Your phone" formControlName="phone" >
-  </div>
-   </div>
-  
-   <input type = "submit"   (ngSubmit)="onSubmit()" [disabled]="!contactForm.valid" class="btn btn-primary" value = "Save">
-  </fieldset>
-  <fieldset fromGroupName="addressGroup">
-    <legend>Address</legend>
-<div class="form-group">
-        <label for="street">Street</label>
-        <input 
-            type="text"  class="form-control" id="street"  formControlName="street">
-    </div>
-    <div class="form-group">
-        <label for="suite">state</label>
-        <input 
-            type="text" class="form-control" id="state" formControlName="state">
-    </div>
-    <div class="form-group">
-        <label for="city">City</label>
-        <input 
-            type="text" class="form-control" id="city"   formControlName="city">
-    </div>
-    <div class="form-group">
-        <label for="zipCode">Zip Code</label>
-        <input 
-            type="text" 
-            class="form-control" 
-            id="zipCode" 
-            formControlName="zipCode">
-    </div>
-</fieldset>
-
-<button>Submit</button>
-  
-    </form>  -->
+      <div class="row">
+        <div class="col-6">
+          <label>FIRST NAME*:</label>
+          <input type="text" id="name" class="form-control" name="first_name" placeholder="Your full name"
+            formControlName="first_name">
+          <div
+            *ngIf="addressForm.get(['contact_information', 'first_name']).invalid && (addressForm.get(['contact_information', 'first_name']).dirty || addressForm.get(['contact_information', 'first_name']).touched )  || submitted">
+            <div *ngIf="addressForm.get(['contact_information', 'first_name']).errors?.required"
+              class="alert alert-danger">
+              Name is required.
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <label>LAST NAME:</label>
+          <input type="text" class="form-control" name="lastName" placeholder="Your last name"
+            formControlName="last_name">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <label>EMAIL*:</label>
+          <input type="email" class="form-control" name="email" placeholder="Your email" formControlName="email">
+          <div
+            *ngIf="addressForm.get(['contact_information', 'email']).invalid && (addressForm.get(['contact_information', 'email']).dirty || addressForm.get(['contact_information', 'email']).touched ) || submitted">
+            <div *ngIf="addressForm.get(['contact_information', 'email']).errors?.required" class="alert alert-danger">
+              Email is required.
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <label>PHONE:</label>
+          <input type="text"  [textMask]="{mask: mask}" class="form-control" name="phone" placeholder="Your phone"
+            formControlName="phone">
+        </div>
+      </div>
+    </ng-container>
+    <ng-container formGroupName="billing_address">
+      <h3>Billing Address</h3>
+      <div class="row">
+        <div class="col-6">
+          <label for="name">Name: </label>
+          <input id="name" type="text" class="form-control" formControlName="name">
+          <div
+            *ngIf="addressForm.get(['billing_address', 'name']).invalid && (addressForm.get(['billing_address', 'name']).dirty || addressForm.get(['billing_address', 'name']).touched )  || submitted">
+            <div *ngIf="addressForm.get(['billing_address', 'name']).errors?.required" class="alert alert-danger">
+              Name is required.
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <label for="address_1">Address_1: </label>
+          <input id="address_1" type="text" class="form-control" formControlName="address_1">
+          <div
+            *ngIf="addressForm.get(['billing_address', 'address_1']).invalid && (addressForm.get(['billing_address', 'address_1']).dirty || addressForm.get(['billing_address', 'address_1']).touched )  || submitted">
+            <div *ngIf="addressForm.get(['billing_address', 'address_1']).errors?.required" class="alert alert-danger">
+              Address is required.
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <label for="address_2">Address_2: </label>
+          <input id="address_2" type="text" class="form-control" formControlName="address_2">
+        </div>
+        <div class="col-6">
+          <label for="city">City: </label>
+          <input id="city" type="text" class="form-control" formControlName="city">
+          <div
+            *ngIf="addressForm.get(['billing_address', 'city']).invalid && (addressForm.get(['billing_address', 'city']).dirty || addressForm.get(['billing_address', 'city']).touched )  || submitted">
+            <div *ngIf="addressForm.get(['billing_address', 'city']).errors?.required" class="alert alert-danger">
+              City is required.
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <label for="state">State:</label>
+          <select class="form-control" *ngIf="selectedCountry == 'USA'" formControlName="state">
+            <option>--Select a State--</option>
+            <option *ngFor="let state of stateList; let j = index" [value]="state.code">{{state.name}}</option>
+          </select>
+          <input id="city" type="text" class="form-control" formControlName="state"
+            *ngIf="selectedCountry !== 'USA'">
+          <div
+            *ngIf="addressForm.get(['billing_address', 'state']).invalid && (addressForm.get(['billing_address', 'state']).dirty || addressForm.get(['billing_address', 'state']).touched )  || submitted">
+            <div *ngIf="addressForm.get(['billing_address', 'state']).errors?.required" class="alert alert-danger">
+              State is required.
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <label for="country">Country: </label>
+          <select class="form-control" (change)="onChangeCountry($event.target.value)" formControlName="country">
+            <option selected>--Select Country--</option>
+            <option *ngFor="let country of countryList; let i = index" [value]="country.code">{{country.name}}</option>
+          </select>
+          <div *ngIf="addressForm.get(['billing_address', 'country']).invalid 
+          && (addressForm.get(['billing_address', 'country']).errors?.required || 
+          addressForm.get(['billing_address', 'country']).dirty || 
+          addressForm.get(['billing_address', 'country']).touched )  && submitted" class="alert alert-danger">
+              State is required.
+          </div>
+        </div>
+        <div class="col-6">
+          <label for="zip">Zip: </label>
+          <input id="zip" type="text" class="form-control" formControlName="zip">
+          <div
+            *ngIf="addressForm.get(['billing_address', 'zip']).invalid && (addressForm.get(['billing_address', 'zip']).dirty || addressForm.get(['billing_address', 'zip']).touched )  || submitted">
+            <div *ngIf="addressForm.get(['billing_address', 'zip']).errors?.required" class="alert alert-danger">
+              State is required.
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <button type="submit" (ngSubmit)="onSubmit()" [disabled]="addressForm.valid" class="btn btn-primary">SAVE</button>
+  </form>
+</div>
