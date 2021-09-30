@@ -21,6 +21,7 @@ export class AddressComponent implements OnInit {
   submitted = false;
   mask = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, ' ', 'x', /\d/, /\d/, /\d/, /\d/, /\d/];;
   selectedCountry: any;
+  selectedCountry1: any;
 
   constructor(private fb: FormBuilder) {
   }
@@ -33,29 +34,25 @@ export class AddressComponent implements OnInit {
         'email': ['', [Validators.required, Validators.email]],
         'phone': ['']
       }),
-      'billing_address': this.fb.group({
-        'name': ['', [Validators.required]],
-        'address_1': ['', [Validators.required]],
-        'address_2': ['', [Validators.required]],
-        'state': [''],
-        'city': ['', [Validators.required]],
-        'country': ['', [Validators.required]],
-        'zip': ['', [Validators.required]],
-      }),
-      'shipping_address': this.fb.group({
-        'name': ['', [Validators.required]],
-        'address_1': ['', [Validators.required]],
-        'address_2': ['', [Validators.required]],
-        'city': ['', [Validators.required]],
-        'state': [''],
-        'country': ['', [Validators.required]],
-        'zip': ['', [Validators.required]],
-      })
+      'billing_address':  this.initAddressForm(),
+      'shipping_address': this.initAddressForm()
     });
   }
 
   ngOnInit(): void {
     this.createForm();
+  }
+  initAddressForm()
+  {
+    return this.fb.group({
+      'name': ['', [Validators.required]],
+      'address_1': ['', [Validators.required]],
+      'address_2': ['', [Validators.required]],
+      'city': ['', [Validators.required]],
+      'state': [''],
+      'country': ['', [Validators.required]],
+      'zip': ['', [Validators.required]],
+    });
   }
 
   onSubmit() {
@@ -69,5 +66,8 @@ export class AddressComponent implements OnInit {
 
   onChangeCountry(value) {
     this.selectedCountry = value;
+  }
+  onChangeCountry1(value) {
+    this.selectedCountry1 = value;
   }
 }

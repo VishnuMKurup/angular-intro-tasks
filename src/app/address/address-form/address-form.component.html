@@ -1,0 +1,63 @@
+<div class="row">
+  <div class="col-md-6 mb-2">
+    <label for="name">Name <small class="text-danger">*</small></label>
+    <input type="text" id="name" class="form-control" [formControl]="formGroup.get('name')" >
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6 mb-2">
+    <label for="address_1">Address 1
+      <small class="text-danger">*</small>
+    </label>
+    <input type="text" id="address_1" class="form-control" [formControl]="formGroup.get('address_1')">
+    <div
+      *ngIf="formGroup.get( 'address_1').invalid && (formGroup.get('address_1').dirty || formGroup.get( 'address_1').touched || submitted )  ">
+      <div *ngIf="formGroup.get( 'address_1').errors?.required" class="alert alert-danger">
+        Name is required.
+      </div>
+    </div>
+   
+  </div>
+  <div class="col-md-6 mb-2">
+    <label for="address_2">Address 2</label>
+    <input type="text" id="address_2" class="form-control" [formControl]="formGroup.get('address_2')" >
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6 mb-2">
+    <label for="city">City
+      <small class="text-danger">*</small>
+    </label>
+    <input type="text" id="city" class="form-control" [formControl]="formGroup.get('city')" >
+  </div>
+  <div class="col-md-6 mb-2">
+    <label for="state">State
+      <small class="text-danger">*</small>
+    </label>
+    <div *ngIf="formGroup.get('country').value === 'USA'">
+      <select [formControl]="formGroup.get('state')"  class="form-control">
+        <option value="">Select</option>
+        <option *ngFor="let item of stateList" [value]="item.code">{{item.code}} - {{item.name}}</option>
+      </select>
+    </div>
+    <input [formControl]="formGroup.get('state')" *ngIf="formGroup.get('country').value !== 'USA'" type="text"
+      class="form-control">
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6 mb-2">
+    <label for="zip">Zip
+      <small class="text-danger">*</small>
+    </label>
+    <input type="text" id="zip" class="form-control" [formControl]="formGroup.get('zip')" >
+  </div>
+  <div class="col-md-6 mb-2">
+    <label for="country">Country
+      <small class="text-danger">*</small>
+    </label>
+    <select [formControl]="formGroup.get('country')"  class="form-control">
+      <option value="">Select</option>
+      <option *ngFor="let item of countryList" [value]="item.code">{{item.name}}</option>
+    </select>
+  </div>
+</div>
