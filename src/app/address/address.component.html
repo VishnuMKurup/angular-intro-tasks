@@ -30,10 +30,14 @@
           <label>EMAIL*:</label>
           <input type="email" class="form-control" name="email" placeholder="Your email" formControlName="email">
           <div
-            *ngIf="addressForm.get(['contact_information', 'email']).invalid && (addressForm.get(['contact_information', 'email']).dirty || addressForm.get(['contact_information', 'email']).touched ) || submitted">
-            <div *ngIf="addressForm.get(['contact_information', 'email']).errors?.required" class="alert alert-danger">
-              Email is required.
-            </div>
+            *ngIf="addressForm.get(['contact_information', 'email']).errors?.required && (addressForm.get(['contact_information', 'email']).dirty || addressForm.get(['contact_information', 'email']).touched ) && submitted"
+            class="alert alert-danger">
+            Email is required.
+          </div>
+          <div *ngIf="addressForm.get(['contact_information', 'email']).errors?.email" class="alert alert-danger">Please
+            enter a valid
+            Email
+
           </div>
         </div>
         <div class="col-6">
@@ -44,7 +48,19 @@
       </div>
     </ng-container>
     <h3>Billing Address</h3>
-    <app-address-form  [submitted]="submitted" [formGroupValue]="addressForm.get('billing_address')"></app-address-form>
-    <button type="submit" (ngSubmit)="onSubmit()" [disabled]="addressForm.valid" class="btn btn-primary">SAVE</button>
+    <app-address-form [submitted]="submitted" [addressValue]="addressForm.get('billing_address')"></app-address-form>
+    <h3>Shipping Address</h3>
+    <label>
+      <input type="checkbox" id="isCheckBox" (change)="onChange($event)" />
+      Check if billing address and shipping address is same
+    </label>
+    <app-address-form *ngIf="isShowShipping" [submitted]="submitted"
+      [addressValue]="addressForm.get('shipping_address')"></app-address-form>
+    <label>Internal Notes</label>
+    <div class="row">
+      <textarea [cols]="100" [rows]="5"></textarea>
+    </div>
+    <button type="submit" (ngSubmit)="onSubmit()" [disabled]="!addressForm.valid"
+      class="btn btn-primary float-right mt-2">SAVE</button>
   </form>
 </div>

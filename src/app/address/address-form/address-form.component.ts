@@ -1,17 +1,16 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroupDirective, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-address-form',
   templateUrl: './address-form.component.html'
 })
 export class AddressFormComponent implements OnInit {
-  @Input() formGroupValue: any;
+  @Input() addressValue: any;
   @Input() submitted: boolean;
   formGroup: FormGroup;
-
- 
-  countryList = [
+  
+ countryList = [
     { code: 'IND', name: 'INDIA' },
     { code: 'USA', name: 'United States Of America' }
   ];
@@ -19,16 +18,13 @@ export class AddressFormComponent implements OnInit {
     { code: "AL", name: "Alabama" },
     { code: "AK", name: "Alaska" }
   ];
-  mask = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, ' ', 'x', /\d/, /\d/, /\d/, /\d/, /\d/];; 
+  mask = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, ' ', 'x', /\d/, /\d/, /\d/, /\d/, /\d/];
 
-  constructor(
-   ) { }
+  constructor() { }
 
   ngOnInit() {
-    
-    if (this.formGroupValue) {
-      this.formGroup = this.formGroupValue as  FormGroup;
+    if (this.addressValue) {
+      this.formGroup = this.addressValue as  FormGroup;
     }
-    
   }
 }
