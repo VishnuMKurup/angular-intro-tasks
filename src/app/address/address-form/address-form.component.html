@@ -3,7 +3,7 @@
     <label for="name">Name <small class="text-danger">*</small></label>
     <input type="text" id="name" class="form-control" [formControl]="formGroup.get('name')">
     <div
-      *ngIf="formGroup.get( 'name').invalid && (formGroup.get('name').dirty || formGroup.get( 'name').touched || submitted )  ">
+      *ngIf="formGroup.get( 'name').invalid && (formGroup.get('name').dirty || formGroup.get( 'name').touched || submitted )">
       <div *ngIf="formGroup.get( 'name').errors?.required" class="alert alert-danger">
         Name is required.
       </div>
@@ -17,7 +17,7 @@
     </label>
     <input type="text" id="address_1" class="form-control" [formControl]="formGroup.get('address_1')">
     <div
-      *ngIf="formGroup.get( 'address_1').invalid && (formGroup.get('address_1').dirty || formGroup.get( 'address_1').touched || submitted )  ">
+      *ngIf="formGroup.get( 'address_1').invalid && (formGroup.get('address_1').dirty || formGroup.get( 'address_1').touched || submitted )">
       <div *ngIf="formGroup.get( 'address_1').errors?.required" class="alert alert-danger">
         Address is required.
       </div>
@@ -35,7 +35,7 @@
     </label>
     <input type="text" id="city" class="form-control" [formControl]="formGroup.get('city')">
     <div
-      *ngIf="formGroup.get( 'city').invalid && (formGroup.get('city').dirty || formGroup.get( 'city').touched || submitted )  ">
+      *ngIf="formGroup.get( 'city').invalid && (formGroup.get('city').dirty || formGroup.get( 'city').touched || submitted )">
       <div *ngIf="formGroup.get( 'city').errors?.required" class="alert alert-danger">
         City is required.
       </div>
@@ -51,7 +51,7 @@
         <option *ngFor="let item of stateList" [value]="item.code">{{item.code}} - {{item.name}}</option>
       </select>
       <div
-        *ngIf="formGroup.get( 'state').invalid && (formGroup.get('state').dirty || formGroup.get( 'state').touched || submitted )  ">
+        *ngIf="formGroup.get( 'state').invalid && (formGroup.get('state').dirty || formGroup.get( 'state').touched || submitted )">
         <div *ngIf="formGroup.get( 'state').errors?.required" class="alert alert-danger">
           State is required.
         </div>
@@ -59,6 +59,12 @@
     </div>
     <input [formControl]="formGroup.get('state')" *ngIf="formGroup.get('country').value !== 'USA'" type="text"
       class="form-control">
+    <div
+      *ngIf="formGroup.get( 'state').invalid && (formGroup.get('state').dirty || formGroup.get( 'state').touched || submitted )">
+      <div *ngIf="formGroup.get( 'state').errors?.required" class="alert alert-danger">
+        State is required.
+      </div>
+    </div>
   </div>
 </div>
 <div class="row">
@@ -68,7 +74,7 @@
     </label>
     <input type="text" id="zip" class="form-control" [formControl]="formGroup.get('zip')">
     <div
-      *ngIf="formGroup.get( 'zip').invalid && (formGroup.get('zip').dirty || formGroup.get( 'zip').touched || submitted )  ">
+      *ngIf="formGroup.get( 'zip').invalid && (formGroup.get('zip').dirty || formGroup.get( 'zip').touched || submitted )">
       <div *ngIf="formGroup.get( 'zip').errors?.required" class="alert alert-danger">
         Zip is required.
       </div>
@@ -83,7 +89,7 @@
       <option *ngFor="let item of countryList" [value]="item.code">{{item.name}}</option>
     </select>
     <div
-      *ngIf="formGroup.get( 'country').invalid && (formGroup.get('country').dirty || formGroup.get( 'country').touched || submitted )  ">
+      *ngIf="formGroup.get( 'country').invalid && (formGroup.get('country').dirty || formGroup.get( 'country').touched || submitted )">
       <div *ngIf="formGroup.get( 'country').errors?.required" class="alert alert-danger">
         Country is required.
       </div>

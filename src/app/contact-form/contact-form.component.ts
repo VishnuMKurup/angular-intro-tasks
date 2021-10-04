@@ -36,7 +36,7 @@ export class ContactFormComponent implements OnInit {
   }
 
   get contactFormGroups() {
-    return this.contactForm.get('contacts') as FormArray
+    return this.contactForm.get('contacts') as FormArray;
   }
 
   addContact() {
@@ -52,6 +52,6 @@ export class ContactFormComponent implements OnInit {
   }
 
   removeTab(contact: number) {
-    this.contactFormGroups.removeAt(contact)
+    this.contactFormGroups.removeAt(contact);
   }
 }

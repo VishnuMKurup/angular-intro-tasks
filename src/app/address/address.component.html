@@ -8,7 +8,8 @@
       </div>
       <div class="row">
         <div class="col-6">
-          <label>FIRST NAME*:</label>
+          <label>FIRST NAME</label>
+          <small class="text-danger">*</small>
           <input type="text" id="name" class="form-control" name="first_name" placeholder="Your full name"
             formControlName="first_name">
           <div
@@ -27,10 +28,11 @@
       </div>
       <div class="row">
         <div class="col-6">
-          <label>EMAIL*:</label>
+          <label>EMAIL</label>
+          <small class="text-danger">*</small>
           <input type="email" class="form-control" name="email" placeholder="Your email" formControlName="email">
           <div
-            *ngIf="addressForm.get(['contact_information', 'email']).errors?.required && (addressForm.get(['contact_information', 'email']).dirty || addressForm.get(['contact_information', 'email']).touched ) && submitted"
+            *ngIf="addressForm.get(['contact_information', 'email']).errors?.required && (addressForm.get(['contact_information', 'email']).dirty || addressForm.get(['contact_information', 'email']).touched || submitted) "
             class="alert alert-danger">
             Email is required.
           </div>
@@ -50,17 +52,16 @@
     <h3>Billing Address</h3>
     <app-address-form [submitted]="submitted" [addressValue]="addressForm.get('billing_address')"></app-address-form>
     <h3>Shipping Address</h3>
-    <label>
-      <input type="checkbox" id="isCheckBox" (change)="onChange($event)" />
-      Check if billing address and shipping address is same
+    <label class="float-right">
+      <input type="checkbox" id="isCheckBox" (change)="onChange($event)"/>
+      Same as billing address?
     </label>
     <app-address-form *ngIf="isShowShipping" [submitted]="submitted"
       [addressValue]="addressForm.get('shipping_address')"></app-address-form>
-    <label>Internal Notes</label>
     <div class="row">
+      <label>Internal Notes</label>
       <textarea [cols]="100" [rows]="5"></textarea>
     </div>
-    <button type="submit" (ngSubmit)="onSubmit()" [disabled]="!addressForm.valid"
-      class="btn btn-primary float-right mt-2">SAVE</button>
+    <button type="submit" (ngSubmit)="onSubmit()" class="btn btn-primary float-right mt-2">SAVE</button>
   </form>
 </div>
