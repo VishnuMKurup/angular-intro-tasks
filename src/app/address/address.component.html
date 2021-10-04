@@ -48,18 +48,18 @@
       </div>
     </ng-container>
     <h3>Billing Address</h3>
-    <app-address-form [submitted]="submitted" [addressValue]="addressForm.get('billing_address')"></app-address-form>
+    <app-address-form [submitted]="submitted" [addressValue]="billingAddress"></app-address-form>
     <h3>Shipping Address</h3>
     <label class="float-right">
       <input type="checkbox" id="isCheckBox" (change)="onChange($event)" />
       Same as billing address?
     </label>
     <app-address-form *ngIf="isShowShipping" [submitted]="submitted"
-      [addressValue]="addressForm.get('shipping_address')"></app-address-form>
+      [addressValue]="shippingAddress"></app-address-form>
     <div class="row">
       <label>Internal Notes</label>
       <textarea [cols]="100" [rows]="5"></textarea>
     </div>
-    <button type="submit" (ngSubmit)="onSubmit()" class="btn btn-primary float-right mt-2">SAVE</button>
+    <button type="submit" class="btn btn-primary float-right mt-2">SAVE</button>
   </form>
 </div>

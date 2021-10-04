@@ -50,7 +50,8 @@
         <option value="">Select</option>
         <option *ngFor="let item of stateList" [value]="item.code">{{item.code}} - {{item.name}}</option>
       </select>
-      <div *ngIf="formGroup.get( 'state').invalid && (formGroup.get('state').dirty || formGroup.get( 'state').touched || submitted )">
+      <div
+        *ngIf="formGroup.get( 'state').invalid && (formGroup.get('state').dirty || formGroup.get( 'state').touched || submitted )">
         <div *ngIf="formGroup.get( 'state').errors?.required" class="alert alert-danger">
           State is required.
         </div>
@@ -93,5 +94,9 @@
         Country is required.
       </div>
     </div>
+  </div>
+  <div class="col-6">
+    <label>PHONE</label>
+    <input type="text" [textMask]="{mask: mask}" class="form-control" [formControl]="formGroup.get('phone')">
   </div>
 </div>

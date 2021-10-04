@@ -13,6 +13,10 @@ import { AddressFormComponent } from './address/address-form/address-form.compon
 const appRoutes: Routes = [
   {
     path: '',
+    component: AddressComponent
+  },
+  {
+    path: 'contact',
     component: ContactFormComponent
   }
 ];

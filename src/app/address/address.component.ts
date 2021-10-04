@@ -44,11 +44,13 @@ export class AddressComponent implements OnInit {
     return this.fb.group({
       'name': ['', [Validators.required]],
       'address_1': ['', [Validators.required]],
-      'address_2': ['', [Validators.required]],
+      'address_2': [''],
       'city': ['', [Validators.required]],
       'state': ['', [Validators.required]],
       'country': ['', [Validators.required]],
       'zip': ['', [Validators.required]],
+      'phone': ['']
+
     });
   }
 
@@ -59,21 +61,22 @@ export class AddressComponent implements OnInit {
     }
   }
 
+  get shippingAddress() {
+    return this.addressForm.get('shipping_address') as FormGroup;
+  }
+
+  get billingAddress() {
+    return this.addressForm.get('billing_address') as FormGroup;
+  }
+
   onChange(e) {
     if (e.target.checked) {
       this.isShowShipping = false;
-      const billingAddress = this.addressForm.get('billing_address').value;
-      this.addressForm.get(['shipping_address', 'name']).setValue(billingAddress.name);
-      this.addressForm.get(['shipping_address', 'address_1']).setValue(billingAddress.address_1);
-      this.addressForm.get(['shipping_address', 'address_2']).setValue(billingAddress.address_2);
-      this.addressForm.get(['shipping_address', 'city']).setValue(billingAddress.city);
-      this.addressForm.get(['shipping_address', 'state']).setValue(billingAddress.state);
-      this.addressForm.get(['shipping_address', 'country']).setValue(billingAddress.country);
-      this.addressForm.get(['shipping_address', 'zip']).setValue(billingAddress.zip);
+      this.shippingAddress.setValue(this.billingAddress.value);
     }
     else {
       this.isShowShipping = true;
-      this.addressForm.get('shipping_address').reset();
+      this.shippingAddress.reset();
     }
   }
 }
