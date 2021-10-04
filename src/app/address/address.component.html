@@ -37,10 +37,8 @@
             Email is required.
           </div>
           <div *ngIf="addressForm.get(['contact_information', 'email']).errors?.email" class="alert alert-danger">Please
-            enter a valid
-            Email
-
-          </div>
+            enter a valid Email
+           </div>
         </div>
         <div class="col-6">
           <label>PHONE:</label>
@@ -53,7 +51,7 @@
     <app-address-form [submitted]="submitted" [addressValue]="addressForm.get('billing_address')"></app-address-form>
     <h3>Shipping Address</h3>
     <label class="float-right">
-      <input type="checkbox" id="isCheckBox" (change)="onChange($event)"/>
+      <input type="checkbox" id="isCheckBox" (change)="onChange($event)" />
       Same as billing address?
     </label>
     <app-address-form *ngIf="isShowShipping" [submitted]="submitted"
