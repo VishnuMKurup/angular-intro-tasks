@@ -38,7 +38,7 @@
           </div>
           <div *ngIf="addressForm.get(['contact_information', 'email']).errors?.email" class="alert alert-danger">Please
             enter a valid Email
-           </div>
+          </div>
         </div>
         <div class="col-6">
           <label>PHONE:</label>
@@ -48,14 +48,13 @@
       </div>
     </ng-container>
     <h3>Billing Address</h3>
-    <app-address-form [submitted]="submitted" [addressValue]="billingAddress"></app-address-form>
+    <app-address-form [submitted]="submitted" [formGroup]="billingAddress"></app-address-form>
     <h3>Shipping Address</h3>
     <label class="float-right">
       <input type="checkbox" id="isCheckBox" (change)="onChange($event)" />
       Same as billing address?
     </label>
-    <app-address-form *ngIf="isShowShipping" [submitted]="submitted"
-      [addressValue]="shippingAddress"></app-address-form>
+    <app-address-form *ngIf="isShowShipping" [submitted]="submitted" [formGroup]="shippingAddress"></app-address-form>
     <div class="row">
       <label>Internal Notes</label>
       <textarea [cols]="100" [rows]="5"></textarea>

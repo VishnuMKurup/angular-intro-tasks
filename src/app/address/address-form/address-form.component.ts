@@ -1,14 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-address-form',
   templateUrl: './address-form.component.html'
 })
-export class AddressFormComponent implements OnInit {
-  @Input() addressValue: any;
+export class AddressFormComponent  {
+  @Input() formGroup: FormGroup;
   @Input() submitted: boolean;
-  formGroup: FormGroup;
 
   countryList = [
     { code: 'IND', name: 'INDIA' },
@@ -22,9 +21,4 @@ export class AddressFormComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-    if (this.addressValue) {
-      this.formGroup = this.addressValue as FormGroup;
-    }
-  }
 }
