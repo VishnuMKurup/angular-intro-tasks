@@ -1,5 +1,5 @@
 <div class="container">
-  <form [formGroup]="addressForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="addressForm" (ngSubmit)="onSubmit()" [ngClass]="{'was-validated': submitted}">
     <ng-container formGroupName="contact_information">
       <div class="row">
         <div class="col-12">
@@ -8,16 +8,11 @@
       </div>
       <div class="row">
         <div class="col-6">
-          <label>FIRST NAME</label>
-          <small class="text-danger">*</small>
-          <input type="text" id="name" class="form-control" name="first_name" placeholder="Your full name"
-            formControlName="first_name">
-          <div
-            *ngIf="addressForm.get(['contact_information', 'first_name']).invalid && (addressForm.get(['contact_information', 'first_name']).dirty || addressForm.get(['contact_information', 'first_name']).touched )  || submitted">
-            <div *ngIf="addressForm.get(['contact_information', 'first_name']).errors?.required"
-              class="alert alert-danger">
-              Name is required.
-            </div>
+          <label>FIRST NAME <small class="text-danger">*</small></label>
+          <input type="text" id="name" class="form-control" name="first_name" placeholder="Your full name" formControlName="first_name" required>
+          <div *ngIf="addressForm.get(['contact_information', 'first_name']).errors?.required && (addressForm.get(['contact_information', 'first_name']).dirty || addressForm.get(['contact_information', 'first_name']).touched || submitted) "
+            class="alert alert-danger">
+            FIRST NAME is required.
           </div>
         </div>
         <div class="col-6">
@@ -28,9 +23,13 @@
       </div>
       <div class="row">
         <div class="col-6">
-          <label>EMAIL</label>
-          <small class="text-danger">*</small>
-          <input type="email" class="form-control" name="email" placeholder="Your email" formControlName="email">
+          <label>EMAIL
+            <small class="text-danger">*</small></label>
+          <input type="email" class="form-control" name="email" placeholder="Your email" formControlName="email"
+            required>
+          <div class="invalid-feedback">
+            Enter Email
+          </div>
           <div
             *ngIf="addressForm.get(['contact_information', 'email']).errors?.required && (addressForm.get(['contact_information', 'email']).dirty || addressForm.get(['contact_information', 'email']).touched || submitted) "
             class="alert alert-danger">
@@ -43,7 +42,10 @@
         <div class="col-6">
           <label>PHONE:</label>
           <input type="text" [textMask]="{mask: mask}" class="form-control" name="phone" placeholder="Your phone"
-            formControlName="phone">
+            formControlName="phone" required>
+          <div class="invalid-feedback">
+            Enter Phone
+          </div>
         </div>
       </div>
     </ng-container>
