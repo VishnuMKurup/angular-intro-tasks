@@ -2,7 +2,7 @@
 <div class="row">
   <div class="col-md-6 mb-2">
     <label for="name">Name <small class="text-danger">*</small></label>
-    <input type="text" id="name" class="form-control " formControlName="name" required>
+    <input type="text" id="name" class="form-control is-invalid" formControlName="name" [ngClass]="{ 'is-invalid':formGroup.get( 'name').invalid && (formGroup.get('name').dirty || formGroup.get( 'name').touched || submitted )}" required>
     <div
       *ngIf="formGroup.get( 'name').invalid && (formGroup.get('name').dirty || formGroup.get( 'name').touched || submitted )">
       <div *ngIf="formGroup.get( 'name').errors?.required" class="alert alert-danger ">

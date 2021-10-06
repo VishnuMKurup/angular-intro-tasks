@@ -9,11 +9,12 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
 import { TextMaskModule } from 'angular2-text-mask';
 import { AddressComponent } from './address/address.component';
 import { AddressFormComponent } from './address/address-form/address-form.component';
+import { ShippingComponent } from './shipping/shipping.component';
 
 const appRoutes: Routes = [
   {
     path: '',
-    component: AddressComponent
+    component: ShippingComponent
   },
   {
     path: 'contact',
@@ -30,7 +31,7 @@ const appRoutes: Routes = [
     NgbModule,
     TextMaskModule
   ],
-  declarations: [AppComponent, AddressComponent, ContactFormComponent, AddressFormComponent],
+  declarations: [AppComponent, AddressComponent, ContactFormComponent, AddressFormComponent, ShippingComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
