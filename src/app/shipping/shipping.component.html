@@ -1,4 +1,5 @@
-<form [formGroup]="shippingForm" (ngSubmit)="onSubmit()">
+<div class="container">
+    <form [formGroup]="shippingForm" (ngSubmit)="onSubmit()">
     <div class="row">
         <div class="col-6">
             <label>Shipping Method</label>
@@ -44,3 +45,4 @@
     </div>
     <button type="submit" class="btn btn-primary float-right mt-2">SAVE</button>
 </form>
+</div>

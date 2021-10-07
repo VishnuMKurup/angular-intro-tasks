@@ -9,7 +9,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ShippingComponent implements OnInit {
   shippingForm: FormGroup;
   submitted: boolean;
-  is_shipping_override = false;
   shippingList = [
     { method: 'UPS Ground ' },
     { method: 'UPS Ground Third Party' }
@@ -43,11 +42,11 @@ export class ShippingComponent implements OnInit {
 
   onChange(e) {
     if (e.target.checked) {
-      this.is_shipping_override = true;
+      this.shippingForm.get('is_shipping_override').setValue(true);
       this.shippingForm.get('shipping_cost').disable();
     }
     else {
-      this.is_shipping_override = false;
+      this.shippingForm.get('is_shipping_override').setValue(false);
       this.shippingForm.get('shipping_cost').enable();
     }
   }
