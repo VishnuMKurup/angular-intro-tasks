@@ -4,12 +4,11 @@
             <label>Shipping Method</label>
             <select formControlName="shipping_method" class="form-control is-invalid"
                 [ngClass]="{ 'is-invalid':shippingForm.get( 'shipping_method').errors?.required && (shippingForm.get( 'shipping_method').dirty || shippingForm.get( 'shipping_method').touched || submitted)}"
-                requiredrequired>
+                required>
                 <option value="">Select</option>
                 <option *ngFor="let item of shippingList" [value]="item.method">{{item.method}}</option>
             </select>
-            <div *ngIf="shippingForm.get('shipping_method').errors?.required && (shippingForm.get('shipping_method').dirty || shippingForm.get( 'shipping_method').touched || submitted) "
-                class="invalid-feedback">
+            <div class="invalid-feedback">
                 Shipping method is required.
             </div>
         </div>
@@ -24,8 +23,7 @@
                     name="shipping_cost_override" formControlName="shipping_cost"
                     [ngClass]="{ 'is-invalid':shippingForm.get( 'shipping_cost').errors?.required && (shippingForm.get( 'shipping_cost').dirty || shippingForm.get( 'shipping_cost').touched || submitted)}"
                     required>
-                <div *ngIf="shippingForm.get('shipping_cost').errors?.required && (shippingForm.get('shipping_cost').dirty || shippingForm.get( 'shipping_cost').touched || submitted) "
-                    class="invalid-feedback">
+                <div class="invalid-feedback">
                     Shipping cost is required.
                 </div>
             </div>
