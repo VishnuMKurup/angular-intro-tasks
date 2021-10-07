@@ -1,4 +1,3 @@
-import { getCurrencySymbol } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -18,7 +17,7 @@ export class ShippingComponent implements OnInit {
 
   constructor(private fb: FormBuilder) { }
 
-   createForm() {
+  createForm() {
     this.shippingForm = this.fb.group({
       'shipping_method': ['', [Validators.required]],
       'shipping_account_number': ['', [Validators.required]],
@@ -27,11 +26,11 @@ export class ShippingComponent implements OnInit {
     });
   }
 
-   ngOnInit(): void {
+  ngOnInit(): void {
     this.createForm();
   }
 
-   onSubmit() {
+  onSubmit() {
     this.submitted = true;
     if (this.shippingForm.get('shipping_method').value === 'UPS Ground Third Party') {
       this.shippingForm.get('shipping_account_number').enable();
@@ -42,7 +41,7 @@ export class ShippingComponent implements OnInit {
     console.log(this.shippingForm.value);
   }
 
-   onChange(e) {
+  onChange(e) {
     if (e.target.checked) {
       this.is_shipping_override = true;
       this.shippingForm.get('shipping_cost').disable();
@@ -50,7 +49,6 @@ export class ShippingComponent implements OnInit {
     else {
       this.is_shipping_override = false;
       this.shippingForm.get('shipping_cost').enable();
-
     }
   }
 }
