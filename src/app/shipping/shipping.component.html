@@ -1,48 +1,50 @@
 <div class="container">
     <form [formGroup]="shippingForm" (ngSubmit)="onSubmit()">
-    <div class="row">
-        <div class="col-6">
-            <label>Shipping Method</label>
-            <select formControlName="shipping_method" class="form-control is-invalid"
-                [ngClass]="{ 'is-invalid':shippingForm.get( 'shipping_method').errors?.required && (shippingForm.get( 'shipping_method').dirty || shippingForm.get( 'shipping_method').touched || submitted)}"
-                required>
-                <option value="">Select</option>
-                <option *ngFor="let item of shippingList" [value]="item.method">{{item.method}}</option>
-            </select>
-            <div class="invalid-feedback">
-                Shipping method is required.
-            </div>
-        </div>
-        <div class="col-6">
-            <input type="checkbox" id="isCheckBox" (change)="onChange($event)" formControlName="is_shipping_override" />
-            <label>Shipping Cost Override</label>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">$</span>
-                </div>
-                <input type="number" class="form-control is-invalid" placeholder="Shipping Cost"
-                    name="shipping_cost_override" formControlName="shipping_cost"
-                    [ngClass]="{ 'is-invalid':shippingForm.get( 'shipping_cost').errors?.required && (shippingForm.get( 'shipping_cost').dirty || shippingForm.get( 'shipping_cost').touched || submitted)}"
+        <div class="row">
+            <div class="col-6">
+                <label>Shipping Method</label>
+                <select formControlName="shipping_method" class="form-control is-invalid"
+                    (change)="onShippingMethodChange()"
+                    [ngClass]="{ 'is-invalid':shippingForm.get( 'shipping_method').errors?.required && (shippingForm.get( 'shipping_method').dirty || shippingForm.get( 'shipping_method').touched || submitted)}"
                     required>
+                    <option value="">Select</option>
+                    <option *ngFor="let item of shippingList" [value]="item.method">{{item.method}}</option>
+                </select>
                 <div class="invalid-feedback">
-                    Shipping cost is required.
+                    Shipping method is required.
+                </div>
+            </div>
+            <div class="col-6">
+                <input type="checkbox" id="isCheckBox" (change)="onChange($event)"
+                    formControlName="is_shipping_override" />
+                <label>Shipping Cost Override</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">$</span>
+                    </div>
+                    <input type="number" class="form-control is-invalid" placeholder="Shipping Cost"
+                        name="shipping_cost_override" formControlName="shipping_cost"
+                        [ngClass]="{ 'is-invalid':shippingForm.get( 'shipping_cost').errors?.required && (shippingForm.get( 'shipping_cost').dirty || shippingForm.get( 'shipping_cost').touched || submitted)}"
+                        required>
+                    <div class="invalid-feedback">
+                        Shipping cost is required.
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-6">
-            <div *ngIf="shippingForm.get('shipping_method').value === 'UPS Ground Third Party'">
-                <label>Shipping Account Number</label>
-                <input type="text" class="form-control" name="accNo" formControlName="shipping_account_number"
-                    [ngClass]="{ 'is-invalid':shippingForm.get( 'shipping_account_number').errors?.required && (shippingForm.get( 'shipping_account_number').dirty || shippingForm.get( 'shipping_account_number').touched || submitted)}"
-                    required>
-                <div class="invalid-feedback">
-                    Enter Shipping Account Number
+        <div class="row">
+            <div class="col-6">
+                <div *ngIf="shippingForm.get('shipping_method').value === 'UPS Ground Third Party'">
+                    <label>Shipping Account Number</label>
+                    <input type="text" class="form-control" name="accNo" formControlName="shipping_account_number"
+                        [ngClass]="{ 'is-invalid':shippingForm.get( 'shipping_account_number').errors?.required && (shippingForm.get( 'shipping_account_number').dirty || shippingForm.get( 'shipping_account_number').touched || submitted)}"
+                        required>
+                    <div class="invalid-feedback">
+                        Enter Shipping Account Number
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <button type="submit" class="btn btn-primary float-right mt-2">SAVE</button>
-</form>
+        <button type="submit" class="btn btn-primary float-right mt-2">SAVE</button>
+    </form>
 </div>

@@ -10,7 +10,7 @@ export class ShippingComponent implements OnInit {
   shippingForm: FormGroup;
   submitted: boolean;
   shippingList = [
-    { method: 'UPS Ground ' },
+    { method: 'UPS Ground' },
     { method: 'UPS Ground Third Party' }
   ];
 
@@ -31,23 +31,24 @@ export class ShippingComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    if (this.shippingForm.get('shipping_method').value === 'UPS Ground Third Party') {
-      this.shippingForm.get('shipping_account_number').enable();
-    }
-    else {
-      this.shippingForm.get('shipping_account_number').disable();
-    }
     console.log(this.shippingForm.value);
   }
 
   onChange(e) {
     if (e.target.checked) {
-      this.shippingForm.get('is_shipping_override').setValue(true);
       this.shippingForm.get('shipping_cost').disable();
     }
     else {
-      this.shippingForm.get('is_shipping_override').setValue(false);
       this.shippingForm.get('shipping_cost').enable();
+    }
+  }
+
+  onShippingMethodChange() {
+    if (this.shippingForm.get('shipping_method').value === 'UPS Ground Third Party') {
+      this.shippingForm.get('shipping_account_number').enable();
+    }
+    else {
+      this.shippingForm.get('shipping_account_number').disable();
     }
   }
 }
