@@ -3,7 +3,12 @@ import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-validation',
-  templateUrl: './validation.component.html',
+  template: ` <div class="w-100 pt-2">
+  <div  *ngIf="control.invalid && (control.dirty || control.touched || submitted)" class="alert alert-danger">
+   {{name}} is required.
+  </div>
+  </div>
+  `,
   styleUrls: ['./validation.component.scss']
 })
 export class ValidationComponent {
@@ -11,6 +16,6 @@ export class ValidationComponent {
   @Input() name: string;
   @Input() control: FormControl;
 
-  constructor() {}
+  constructor() { }
 
 }

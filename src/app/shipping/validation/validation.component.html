@@ -1,3 +1,6 @@
-<div *ngIf="control.invalid && (control.dirty || control.touched || submitted)" class="alert alert-danger">
-   please enter your {{name}}
+<div class="w-100 pt-2">
+<div  *ngIf="control.invalid && (control.dirty || control.touched || submitted)" class="alert alert-danger">
+ {{name}} is required.
 </div>
+</div>
+

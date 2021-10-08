@@ -9,24 +9,29 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ShippingComponent implements OnInit {
   shippingForm: FormGroup;
   submitted: boolean;
-  shippingList = [
-    { method: 'UPS Ground' },
-    { method: 'UPS Ground Third Party' }
-  ];
+  shippingList = [];
 
   constructor(private fb: FormBuilder) { }
 
   createForm() {
     this.shippingForm = this.fb.group({
       'shipping_method': ['', [Validators.required]],
-      'shipping_account_number': ['', [Validators.required]],
+      'shipping_account_number': [{ value: '', disabled: true }, [Validators.required]],
       'is_shipping_override': [false],
       'shipping_cost': ['', [Validators.required]]
     });
   }
 
+  createList() {
+    this.shippingList = [
+      { method: 'UPS Ground' },
+      { method: 'UPS Ground Third Party' }
+    ];
+  }
+
   ngOnInit(): void {
     this.createForm();
+    this.createList();
   }
 
   onSubmit() {
