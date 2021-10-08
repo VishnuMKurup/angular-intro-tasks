@@ -7,8 +7,7 @@ import { FormControl } from '@angular/forms';
   <div  *ngIf="control.invalid && (control.dirty || control.touched || submitted)" class="alert alert-danger">
    {{name}} is required.
   </div>
-  </div>
-  `,
+  </div>`,
   styleUrls: ['./validation.component.scss']
 })
 export class ValidationComponent {
