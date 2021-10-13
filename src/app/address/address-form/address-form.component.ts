@@ -1,11 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, Validators } from '@angular/forms';
+import { Component, Input } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-address-form',
   templateUrl: './address-form.component.html'
 })
-export class AddressFormComponent  {
+export class AddressFormComponent {
   @Input() formGroup: FormGroup;
   @Input() submitted: boolean;
 
@@ -19,6 +19,8 @@ export class AddressFormComponent  {
   ];
   mask = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, ' ', 'x', /\d/, /\d/, /\d/, /\d/, /\d/];
 
-  constructor() { }
+
+  constructor() {
+  }
 
 }

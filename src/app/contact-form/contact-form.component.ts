@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import {
   FormArray,
   FormBuilder,
-  FormControl,
   FormGroup,
   Validators
 } from '@angular/forms';
@@ -16,7 +15,7 @@ export class ContactFormComponent implements OnInit {
   formSubmitted: boolean = false;
   mask = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private el: ElementRef) {
   }
 
   ngOnInit() {
@@ -31,7 +30,7 @@ export class ContactFormComponent implements OnInit {
       'fname': ['', [Validators.required]],
       'lname': [''],
       'email': ['', [Validators.required, Validators.email]],
-      'phone': ['',[Validators.required,Validators.minLength(10)]]
+      'phone': ['', [Validators.required, Validators.minLength(10)]]
     });
   }
 
@@ -48,6 +47,11 @@ export class ContactFormComponent implements OnInit {
     this.formSubmitted = true;
     if (this.contactForm.valid) {
       console.log(this.contactForm.value);
+    }
+    else {
+      this.el.nativeElement.querySelectorAll('.ng-invalid').forEach(element => {
+        element.classList.add('is-invalid');
+      });
     }
   }
 

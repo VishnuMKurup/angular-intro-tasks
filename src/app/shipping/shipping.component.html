@@ -3,7 +3,8 @@
         <div class="row">
             <div class="col-6">
                 <label>Shipping Method</label>
-                <select formControlName="shipping_method" class="form-control" (change)="onShippingMethodChange()">
+                <select formControlName="shipping_method" class="form-control" (change)="onShippingMethodChange()"
+                    appValidation>
                     <option value="">Select</option>
                     <option *ngFor="let item of shippingList" [value]="item.method">{{item.method}}</option>
                 </select>
@@ -20,7 +21,7 @@
                         <span class="input-group-text">$</span>
                     </div>
                     <input type="number" class="form-control " placeholder="Shipping Cost" name="shipping_cost_override"
-                        formControlName="shipping_cost">
+                        formControlName="shipping_cost" appValidation>
                 </div>
                 <app-validation [submitted]="submitted" name="Shipping Cost"
                     [control]="shippingForm.get('shipping_cost')">
@@ -31,7 +32,8 @@
             <div class="col-6">
                 <div *ngIf="shippingForm.get('shipping_method').value === 'UPS Ground Third Party'">
                     <label>Shipping Account Number</label>
-                    <input type="text" class="form-control" name="accNo" formControlName="shipping_account_number">
+                    <input type="text" class="form-control" name="accNo" formControlName="shipping_account_number"
+                        appValidation>
                     <app-validation [submitted]="submitted" name="Shipping Account Number"
                         [control]="shippingForm.get('shipping_account_number')">
                     </app-validation>

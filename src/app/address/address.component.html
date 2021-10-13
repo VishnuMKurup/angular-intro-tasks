@@ -1,5 +1,5 @@
 <div class="container">
-  <form [formGroup]="addressForm" (ngSubmit)="onSubmit()" >
+  <form [formGroup]="addressForm" (ngSubmit)="onSubmit()">
     <ng-container formGroupName="contact_information">
       <div class="row">
         <div class="col-12">
@@ -9,11 +9,11 @@
       <div class="row">
         <div class="col-6">
           <label>FIRST NAME <small class="text-danger">*</small></label>
-          <input type="text" id="name" class="form-control is-invalid" name="first_name" placeholder="Your full name" formControlName="first_name" [ngClass]="{ 'is-invalid':addressForm.get(['contact_information', 'first_name']).errors?.required && (addressForm.get(['contact_information', 'first_name']).dirty || addressForm.get(['contact_information', 'first_name']).touched || submitted)}"  required>
-          <div *ngIf="addressForm.get(['contact_information', 'first_name']).errors?.required && (addressForm.get(['contact_information', 'first_name']).dirty || addressForm.get(['contact_information', 'first_name']).touched || submitted) "
-            class="invalid-feedback">
-            FIRST NAME is required.
-          </div>
+          <input type="text" id="name" class="form-control" name="first_name" appValidation placeholder="Your full name"
+            formControlName="first_name">
+          <app-validation [submitted]="submitted" name="First Name"
+            [control]="addressForm.get(['contact_information', 'first_name'])">
+          </app-validation>
         </div>
         <div class="col-6">
           <label>LAST NAME:</label>
@@ -25,24 +25,19 @@
         <div class="col-6">
           <label>EMAIL
             <small class="text-danger">*</small></label>
-          <input type="email" class="form-control is-invalid" name="email" placeholder="Your email" formControlName="email"[ngClass]="{ 'is-invalid':addressForm.get(['contact_information', 'email']).errors?.required && (addressForm.get(['contact_information', 'email']).dirty || addressForm.get(['contact_information', 'email']).touched || submitted)}"
-            required>
-          <div
-            *ngIf="addressForm.get(['contact_information', 'email']).errors?.required && (addressForm.get(['contact_information', 'email']).dirty || addressForm.get(['contact_information', 'email']).touched || submitted) "
-            class="invalid-feedback">
-            Email is required.
-          </div>
-          <div *ngIf="addressForm.get(['contact_information', 'email']).errors?.email" class="alert alert-danger">Please
-            enter a valid Email
-          </div>
+          <input type="email" id="email" class="form-control" name="email" appValidation placeholder="Your email"
+            formControlName="email">
+          <app-validation [submitted]="submitted" name="Email"
+            [control]="addressForm.get(['contact_information', 'email'])">
+          </app-validation>
         </div>
         <div class="col-6">
           <label>PHONE:</label>
           <input type="text" [textMask]="{mask: mask}" class="form-control" name="phone" placeholder="Your phone"
             formControlName="phone" required>
-          <div class="invalid-feedback">
-            Enter Phone
-          </div>
+          <app-validation [submitted]="submitted" name="Phone"
+            [control]="addressForm.get(['contact_information', 'phone'])">
+          </app-validation>
         </div>
       </div>
     </ng-container>

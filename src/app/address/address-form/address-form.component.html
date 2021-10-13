@@ -1,104 +1,74 @@
 <div [formGroup]="formGroup">
-<div class="row">
-  <div class="col-md-6 mb-2">
-    <label for="name">Name <small class="text-danger">*</small></label>
-    <input type="text" id="name" class="form-control is-invalid" formControlName="name" [ngClass]="{ 'is-invalid':formGroup.get( 'name').invalid && (formGroup.get('name').dirty || formGroup.get( 'name').touched || submitted )}" required>
-    <div
-      *ngIf="formGroup.get( 'name').invalid && (formGroup.get('name').dirty || formGroup.get( 'name').touched || submitted )">
-      <div *ngIf="formGroup.get( 'name').errors?.required" class="alert alert-danger ">
-        Name is required.
-      </div>
+  <div class="row">
+    <div class="col-md-6 mb-2">
+      <label for="name">Name <small class="text-danger">*</small></label>
+      <input type="text" id="name" class="form-control" formControlName="name" appValidation>
+      <app-validation [submitted]="submitted" name="Name" [control]="formGroup.get('name')">
+      </app-validation>
     </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-md-6 mb-2">
-    <label for="address_1">Address 1
-      <small class="text-danger">*</small>
-    </label>
-    <input type="text" id="address_1" class="form-control" formControlName="address_1" required>
-    <div
-      *ngIf="formGroup.get( 'address_1').invalid && (formGroup.get('address_1').dirty || formGroup.get( 'address_1').touched || submitted )">
-      <div *ngIf="formGroup.get( 'address_1').errors?.required" class="alert alert-danger">
-        Address is required.
-      </div>
+  <div class="row">
+    <div class="col-md-6 mb-2">
+      <label for="address_1">Address 1
+        <small class="text-danger">*</small>
+      </label>
+      <input type="text" id="address_1" class="form-control" formControlName="address_1" appValidation>
+      <app-validation [submitted]="submitted" name="Address 1" [control]="formGroup.get('address_1')">
+      </app-validation>
+    </div>
+    <div class="col-md-6 mb-2">
+      <label for="address_2">Address 2</label>
+      <input type="text" id="address_2" class="form-control" formControlName="address_2">
     </div>
   </div>
-  <div class="col-md-6 mb-2">
-    <label for="address_2">Address 2</label>
-    <input type="text" id="address_2" class="form-control" formControlName="address_2">
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-6 mb-2">
-    <label for="city">City
-      <small class="text-danger">*</small>
-    </label>
-    <input type="text" id="city" class="form-control" formControlName="city" required>
-    <div
-      *ngIf="formGroup.get( 'city').invalid && (formGroup.get('city').dirty || formGroup.get( 'city').touched || submitted )">
-      <div *ngIf="formGroup.get( 'city').errors?.required" class="alert alert-danger">
-        City is required.
+  <div class="row">
+    <div class="col-md-6 mb-2">
+      <label for="city">City
+        <small class="text-danger">*</small>
+      </label>
+      <input type="text" id="city" class="form-control" formControlName="city" appValidation>
+      <app-validation [submitted]="submitted" name="City" [control]="formGroup.get('city')">
+      </app-validation>
+    </div>
+    <div class="col-md-6 mb-2">
+      <label for="state">State
+        <small class="text-danger">*</small>
+      </label>
+      <div *ngIf="formGroup.get('country').value === 'USA'">
+        <select formControlName="state" class="form-control" appValidation>
+          <option value="">Select</option>
+          <option *ngFor="let item of stateList" [value]="item.code">{{item.code}} - {{item.name}}</option>
+        </select>
       </div>
+      <input formControlName="state" *ngIf="formGroup.get('country').value !== 'USA'" type="text" class="form-control"
+        appValidation>
+      <app-validation [submitted]="submitted" name="State" [control]="formGroup.get('state')">
+      </app-validation>
     </div>
   </div>
-  <div class="col-md-6 mb-2">
-    <label for="state">State
-      <small class="text-danger">*</small>
-    </label>
-    <div *ngIf="formGroup.get('country').value === 'USA'">
-      <select formControlName="state" class="form-control" required>
+  <div class="row">
+    <div class="col-md-6 mb-2">
+      <label for="zip">Zip
+        <small class="text-danger">*</small>
+      </label>
+      <input type="text" id="zip" class="form-control" formControlName="zip" appValidation>
+      <app-validation [submitted]="submitted" name="Zip" [control]="formGroup.get('zip')">
+      </app-validation>
+    </div>
+    <div class="col-md-6 mb-2">
+      <label for="country">Country
+        <small class="text-danger">*</small>
+      </label>
+      <select formControlName="country" class="form-control" appValidation>
         <option value="">Select</option>
-        <option *ngFor="let item of stateList" [value]="item.code">{{item.code}} - {{item.name}}</option>
+        <option *ngFor="let item of countryList" [value]="item.code">{{item.name}}</option>
       </select>
-      <div
-        *ngIf="formGroup.get( 'state').invalid && (formGroup.get('state').dirty || formGroup.get( 'state').touched || submitted )">
-        <div *ngIf="formGroup.get( 'state').errors?.required" class="alert alert-danger">
-          State is required.
-        </div>
-      </div>
+      <app-validation [submitted]="submitted" name="Country" [control]="formGroup.get('country')">
+      </app-validation>
     </div>
-    <input formControlName="state" *ngIf="formGroup.get('country').value !== 'USA'" type="text"
-      class="form-control"required>
-    <div
-      *ngIf="formGroup.get( 'state').invalid && (formGroup.get('state').dirty || formGroup.get( 'state').touched || submitted )">
-      <div *ngIf="formGroup.get( 'state').errors?.required" class="alert alert-danger">
-        State is required.
-      </div>
+    <div class="col-6">
+      <label>PHONE</label>
+      <input type="text" [textMask]="{mask: mask}" class="form-control" formControlName="phone">
     </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-md-6 mb-2">
-    <label for="zip">Zip
-      <small class="text-danger">*</small>
-    </label>
-    <input type="text" id="zip" class="form-control" formControlName="zip" required>
-    <div
-      *ngIf="formGroup.get( 'zip').invalid && (formGroup.get('zip').dirty || formGroup.get( 'zip').touched || submitted )">
-      <div *ngIf="formGroup.get( 'zip').errors?.required" class="alert alert-danger">
-        Zip is required.
-      </div>
-    </div>
-  </div>
-  <div class="col-md-6 mb-2">
-    <label for="country">Country
-      <small class="text-danger">*</small>
-    </label>
-    <select formControlName="country" class="form-control" required>
-      <option value="">Select</option>
-      <option *ngFor="let item of countryList" [value]="item.code">{{item.name}}</option>
-    </select>
-    <div
-      *ngIf="formGroup.get( 'country').invalid && (formGroup.get('country').dirty || formGroup.get( 'country').touched || submitted )">
-      <div *ngIf="formGroup.get( 'country').errors?.required" class="alert alert-danger">
-        Country is required.
-      </div>
-    </div>
-  </div>
-  <div class="col-6">
-    <label>PHONE</label>
-    <input type="text" [textMask]="{mask: mask}" class="form-control" formControlName="phone">
-  </div>
-</div>
 </div>

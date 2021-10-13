@@ -5,8 +5,8 @@
         <a class="navbar-brand" href="#">CONTACT_FORM</a>
       </div>
       <ul class="nav navbar-nav navbar-right ">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a href="#"> Sign Up</a></li>
+        <li><a href="#">Login</a></li>
       </ul>
       <form class="navbar-form navbar-left" action="/action_page.php">
         <div class="form-group">
@@ -33,13 +33,10 @@
             <div class="row">
               <div class="col-6 ">
                 <label>First Name <small>*</small></label>
-                <input type="text" class="form-control" formControlName="fname">
-                <p>
-                  <small
-                    *ngIf="contactForm.get(['contacts', ind, 'fname']).errors?.required &&  (contactForm.touched || contactForm.dirty || formSubmitted)">First
-                    Name is
-                    required</small>
-                </p>
+                <input type="text" class="form-control" formControlName="fname" appValidation>
+                <app-validation [submitted]="formSubmitted" name="First Name"
+                  [control]="contactForm.get(['contacts', ind, 'fname'])">
+                </app-validation>
               </div>
               <div class="col-6">
                 <label>Last Name</label>
@@ -49,23 +46,17 @@
             <div class="row">
               <div class="col-6">
                 <label>Email <small>*</small></label>
-                <input type="text" class="form-control" formControlName="email">
-                <p>
-                  <small
-                    *ngIf="contactForm.get(['contacts', ind, 'email']).errors?.required &&(contactForm.touched || contactForm.dirty || formSubmitted) ">Email
-                    is
-                    required</small>
-                  <small *ngIf="contactForm.get(['contacts', ind, 'email']).errors?.email">Please enter a valid
-                    Email</small>
-                </p>
+                <input type="text" class="form-control" formControlName="email" appValidation>
+                <app-validation [submitted]="formSubmitted" name="Email"
+                  [control]="contactForm.get(['contacts', ind, 'email'])">
+                </app-validation>
               </div>
               <div class="col-6">
                 <label>Phone</label>
-                <input type="text" [textMask]="{mask: mask}" class="form-control" formControlName="phone"   >
-                <p>
-                  <small *ngIf="contactForm.get(['contacts', ind, 'phone']).errors?.required && (contactForm.touched || contactForm.dirty || formSubmitted)">Please enter a valid
-                    phone</small>
-                </p>
+                <input type="text" [textMask]="{mask: mask}" class="form-control" formControlName="phone" appValidation>
+                <app-validation [submitted]="formSubmitted" name="Phone"
+                  [control]="contactForm.get(['contacts', ind, 'phone'])">
+                </app-validation>
               </div>
             </div>
             <div>

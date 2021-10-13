@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -11,7 +11,7 @@ export class ShippingComponent implements OnInit {
   submitted: boolean;
   shippingList = [];
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private el: ElementRef) { }
 
   createForm() {
     this.shippingForm = this.fb.group({
@@ -36,7 +36,14 @@ export class ShippingComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    console.log(this.shippingForm.value);
+    if (this.shippingForm.valid) {
+      console.log(this.shippingForm.value);
+    }
+    else {
+      this.el.nativeElement.querySelectorAll('.ng-invalid').forEach(element => {
+        element.classList.add('is-invalid');
+      });
+    }
   }
 
   onChange(e) {
