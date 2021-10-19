@@ -1,24 +1,19 @@
-import { Directive, ElementRef, HostListener } from '@angular/core';
+import { Directive, HostBinding, Input, Self } from '@angular/core';
+import { NgControl } from '@angular/forms';
 
 @Directive({
   selector: '[appValidation]'
 })
 export class ValidationDirective {
+  @Input() appValidation
 
-  constructor(private el: ElementRef) { }
+  constructor(
+    @Self() private ngControl: NgControl
+  ) { }
 
-  @HostListener('focusout', ['$event']) onFocusOut(event) {
-    if (!this.el.nativeElement.value) {
-      this.el.nativeElement.classList.add('is-invalid');
-    }
-  }
-
-  @HostListener('input', ['$event']) onInputChange(event) {
-    if (!this.el.nativeElement.value) {
-      this.el.nativeElement.classList.add('is-invalid');
-    }
-    else {
-      this.el.nativeElement.classList.remove('is-invalid');
-    }
+  @HostBinding('class.is-invalid')
+  get invalid() {
+    return !this.ngControl.valid &&
+      (this.ngControl.touched || this.ngControl.dirty || this.appValidation);
   }
 }

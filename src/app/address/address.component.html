@@ -9,7 +9,7 @@
       <div class="row">
         <div class="col-6">
           <label>FIRST NAME <small class="text-danger">*</small></label>
-          <input type="text" id="name" class="form-control" name="first_name" appValidation placeholder="Your full name"
+          <input type="text" id="name" class="form-control" name="first_name" [appValidation]="submitted" placeholder="Your full name"
             formControlName="first_name">
           <app-validation [submitted]="submitted" name="First Name"
             [control]="addressForm.get(['contact_information', 'first_name'])">
@@ -25,7 +25,7 @@
         <div class="col-6">
           <label>EMAIL
             <small class="text-danger">*</small></label>
-          <input type="email" id="email" class="form-control" name="email" appValidation placeholder="Your email"
+          <input type="email" id="email" class="form-control" name="email" [appValidation]="submitted" placeholder="Your email"
             formControlName="email">
           <app-validation [submitted]="submitted" name="Email"
             [control]="addressForm.get(['contact_information', 'email'])">

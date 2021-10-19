@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -17,11 +17,11 @@ export class AddressComponent implements OnInit {
     { code: 'AK', name: 'Alaska' }
   ]
   addressForm: FormGroup;
-  submitted = false;
+  submitted: boolean;
   mask = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, ' ', 'x', /\d/, /\d/, /\d/, /\d/, /\d/];
   isShowShipping = true;
 
-  constructor(private fb: FormBuilder, private el: ElementRef) { }
+  constructor(private fb: FormBuilder) { }
 
   createForm() {
     this.addressForm = this.fb.group({
@@ -58,11 +58,6 @@ export class AddressComponent implements OnInit {
     this.submitted = true;
     if (this.addressForm.valid) {
       console.log(this.addressForm.value);
-    }
-    else {
-      this.el.nativeElement.querySelectorAll('.ng-invalid').forEach(element => {
-        element.classList.add('is-invalid');
-      });
     }
   }
 

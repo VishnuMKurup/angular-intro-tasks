@@ -48,11 +48,6 @@ export class ContactFormComponent implements OnInit {
     if (this.contactForm.valid) {
       console.log(this.contactForm.value);
     }
-    else {
-      this.el.nativeElement.querySelectorAll('.ng-invalid').forEach(element => {
-        element.classList.add('is-invalid');
-      });
-    }
   }
 
   removeTab(contact: number) {

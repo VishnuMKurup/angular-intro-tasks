@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-6 mb-2">
       <label for="name">Name <small class="text-danger">*</small></label>
-      <input type="text" id="name" class="form-control" formControlName="name" appValidation>
+      <input type="text" id="name" class="form-control" formControlName="name" [appValidation]="submitted">
       <app-validation [submitted]="submitted" name="Name" [control]="formGroup.get('name')">
       </app-validation>
     </div>
@@ -12,7 +12,7 @@
       <label for="address_1">Address 1
         <small class="text-danger">*</small>
       </label>
-      <input type="text" id="address_1" class="form-control" formControlName="address_1" appValidation>
+      <input type="text" id="address_1" class="form-control" formControlName="address_1" [appValidation]="submitted">
       <app-validation [submitted]="submitted" name="Address 1" [control]="formGroup.get('address_1')">
       </app-validation>
     </div>
@@ -26,7 +26,7 @@
       <label for="city">City
         <small class="text-danger">*</small>
       </label>
-      <input type="text" id="city" class="form-control" formControlName="city" appValidation>
+      <input type="text" id="city" class="form-control" formControlName="city" [appValidation]="submitted">
       <app-validation [submitted]="submitted" name="City" [control]="formGroup.get('city')">
       </app-validation>
     </div>
@@ -35,7 +35,7 @@
         <small class="text-danger">*</small>
       </label>
       <div *ngIf="formGroup.get('country').value === 'USA'">
-        <select formControlName="state" class="form-control" appValidation>
+        <select formControlName="state" class="form-control" [appValidation]="submitted">
           <option value="">Select</option>
           <option *ngFor="let item of stateList" [value]="item.code">{{item.code}} - {{item.name}}</option>
         </select>
@@ -51,7 +51,7 @@
       <label for="zip">Zip
         <small class="text-danger">*</small>
       </label>
-      <input type="text" id="zip" class="form-control" formControlName="zip" appValidation>
+      <input type="text" id="zip" class="form-control" formControlName="zip" [appValidation]="submitted">
       <app-validation [submitted]="submitted" name="Zip" [control]="formGroup.get('zip')">
       </app-validation>
     </div>
@@ -59,7 +59,7 @@
       <label for="country">Country
         <small class="text-danger">*</small>
       </label>
-      <select formControlName="country" class="form-control" appValidation>
+      <select formControlName="country" class="form-control" [appValidation]="submitted">
         <option value="">Select</option>
         <option *ngFor="let item of countryList" [value]="item.code">{{item.name}}</option>
       </select>

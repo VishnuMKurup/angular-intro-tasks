@@ -33,7 +33,7 @@
             <div class="row">
               <div class="col-6 ">
                 <label>First Name <small>*</small></label>
-                <input type="text" class="form-control" formControlName="fname" appValidation>
+                <input type="text" class="form-control" formControlName="fname" [appValidation]="formSubmitted">
                 <app-validation [submitted]="formSubmitted" name="First Name"
                   [control]="contactForm.get(['contacts', ind, 'fname'])">
                 </app-validation>
@@ -46,14 +46,15 @@
             <div class="row">
               <div class="col-6">
                 <label>Email <small>*</small></label>
-                <input type="text" class="form-control" formControlName="email" appValidation>
+                <input type="text" class="form-control" formControlName="email" [appValidation]="formSubmitted">
                 <app-validation [submitted]="formSubmitted" name="Email"
                   [control]="contactForm.get(['contacts', ind, 'email'])">
                 </app-validation>
               </div>
               <div class="col-6">
                 <label>Phone</label>
-                <input type="text" [textMask]="{mask: mask}" class="form-control" formControlName="phone" appValidation>
+                <input type="text" [textMask]="{mask: mask}" class="form-control" formControlName="phone"
+                  [appValidation]="formSubmitted">
                 <app-validation [submitted]="formSubmitted" name="Phone"
                   [control]="contactForm.get(['contacts', ind, 'phone'])">
                 </app-validation>
