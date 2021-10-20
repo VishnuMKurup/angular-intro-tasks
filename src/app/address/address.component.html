@@ -33,8 +33,8 @@
         </div>
         <div class="col-6">
           <label>PHONE:</label>
-          <input type="text" [textMask]="{mask: mask}" class="form-control" name="phone" placeholder="Your phone"
-            formControlName="phone" required>
+          <input type="text" [textMask]="{mask: mask,guide: false }" class="form-control" name="phone" placeholder="Your phone"
+            formControlName="phone" >
           <app-validation [submitted]="submitted" name="Phone"
             [control]="addressForm.get(['contact_information', 'phone'])">
           </app-validation>

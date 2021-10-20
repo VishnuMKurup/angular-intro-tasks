@@ -20,7 +20,7 @@ export class AddressComponent implements OnInit {
   submitted: boolean;
   mask = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, ' ', 'x', /\d/, /\d/, /\d/, /\d/, /\d/];
   isShowShipping = true;
-
+  phonePattern = /^\(?([0-9]{3})\)[ ]?([0-9]{3})[-]?([0-9]{4})([ ][xX][0-9]{5})?$/;
   constructor(private fb: FormBuilder) { }
 
   createForm() {
@@ -29,7 +29,8 @@ export class AddressComponent implements OnInit {
         'first_name': ['', [Validators.required]],
         'last_name': [''],
         'email': ['', [Validators.required, Validators.email]],
-        'phone': ['']
+        'phone': ['',[Validators.required,
+          Validators.pattern(this.phonePattern)]]
       }),
       'billing_address': this.initAddressForm(),
       'shipping_address': this.initAddressForm()
@@ -49,7 +50,8 @@ export class AddressComponent implements OnInit {
       'state': ['', [Validators.required]],
       'country': ['', [Validators.required]],
       'zip': ['', [Validators.required]],
-      'phone': ['']
+      'phone': ['',[Validators.required,
+        Validators.pattern(this.phonePattern)]]
 
     });
   }

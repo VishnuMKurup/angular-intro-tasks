@@ -1,4 +1,4 @@
-import { Component, Input, } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -8,13 +8,15 @@ import { FormControl } from '@angular/forms';
    {{name}} is required.
   </div>
   <div *ngIf="control.errors?.email && !control.errors?.required" class="alert alert-danger">Please enter a valid Email</div>
-  </div> `,
+  </div>
+   <div *ngIf="control.errors?.pattern" class="alert alert-danger">Phone number must be at least 15 numbers</div>`,
   styleUrls: ['./validation.component.scss']
 })
-export class ValidationComponent {
+export class ValidationComponent  {
   @Input() submitted: boolean;
   @Input() name: string;
   @Input() control: FormControl;
 
   constructor() { }
+
 }

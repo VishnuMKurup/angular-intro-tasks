@@ -68,7 +68,9 @@
     </div>
     <div class="col-6">
       <label>PHONE</label>
-      <input type="text" [textMask]="{mask: mask}" class="form-control" formControlName="phone">
+      <input type="text" [textMask]="{mask: mask,guide: false }" class="form-control" formControlName="phone">
+      <app-validation [submitted]="submitted" name="phone" [control]="formGroup.get('phone')">
+      </app-validation>
     </div>
   </div>
 </div>
