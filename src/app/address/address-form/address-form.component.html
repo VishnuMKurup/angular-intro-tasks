@@ -41,7 +41,7 @@
         </select>
       </div>
       <input formControlName="state" *ngIf="formGroup.get('country').value !== 'USA'" type="text" class="form-control"
-        appValidation>
+      [appValidation]="submitted">
       <app-validation [submitted]="submitted" name="State" [control]="formGroup.get('state')">
       </app-validation>
     </div>
