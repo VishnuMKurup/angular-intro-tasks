@@ -11,6 +11,7 @@ import { AddressFormComponent } from './address/address-form/address-form.compon
 import { ShippingComponent } from './shipping/shipping.component';
 import { ValidationComponent } from './shipping/validation/validation.component';
 import { ValidationDirective } from './validation.directive';
+import { CustomValidatorComponent } from './custom-validator/custom-validator.component';
 
 
 const appRoutes: Routes = [
@@ -25,6 +26,10 @@ const appRoutes: Routes = [
   {
     path: 'address',
     component: AddressComponent
+  },
+  {
+    path: 'custom',
+    component: CustomValidatorComponent
   }
 ];
 
@@ -37,7 +42,7 @@ const appRoutes: Routes = [
     NgbModule,
     TextMaskModule
   ],
-  declarations: [AppComponent, AddressComponent, ContactFormComponent, AddressFormComponent, ShippingComponent, ValidationComponent, ValidationDirective],
+  declarations: [AppComponent, AddressComponent, ContactFormComponent, AddressFormComponent, ShippingComponent, ValidationComponent, ValidationDirective, CustomValidatorComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

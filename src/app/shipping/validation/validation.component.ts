@@ -9,7 +9,9 @@ import { FormControl } from '@angular/forms';
   </div>
   <div *ngIf="control.errors?.email && !control.errors?.required" class="alert alert-danger">Please enter a valid Email</div>
   </div>
-   <div *ngIf="control.errors?.pattern" class="alert alert-danger">Phone number must be at least 15 numbers</div>`,
+   <div *ngIf="control.errors?.pattern" class="alert alert-danger">Phone number must be at least 15 numbers</div>
+   <div *ngIf="control.errors?.validationSpace" class="alert alert-danger">Username can not contain space.</div>
+   <div *ngIf="control.errors?.mailFormat" class="alert alert-danger">Please Enter Valid Email.</div>`,
   styleUrls: ['./validation.component.scss']
 })
 export class ValidationComponent  {
