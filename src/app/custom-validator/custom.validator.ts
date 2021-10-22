@@ -9,7 +9,7 @@ export class UsernameValidator {
     }
     static mailFormat(control: AbstractControl): ValidationErrors | null {
 
-        var EMAIL_REGEXP = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{3,}))$/i;
+        var EMAIL_REGEXP = /^[a-z,A-Z,0-9,-,_,.]+@[a-z,A-Z]+\.[a-z,A-Z]{3}$/;
 
         if (control.value !== '' && (control.value.length <= 5 || !EMAIL_REGEXP.test(control.value))) {
             return { mailFormat: true };
