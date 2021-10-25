@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { customValidator } from './custom.validator';
+import { customValidator } from '../shared/custom-validator/custom.validator';
 
 @Component({
-  selector: 'app-custom-validator',
-  templateUrl: './custom-validator.component.html',
-  styleUrls: ['./custom-validator.component.scss']
+  selector: 'app-login',
+  templateUrl: './login-form.component.html',
+  styleUrls: ['./login-form.component.scss']
 })
 export class CustomValidatorComponent {
   submitted: boolean = false;

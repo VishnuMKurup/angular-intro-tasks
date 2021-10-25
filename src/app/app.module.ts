@@ -9,9 +9,11 @@ import { TextMaskModule } from 'angular2-text-mask';
 import { AddressComponent } from './address/address.component';
 import { AddressFormComponent } from './address/address-form/address-form.component';
 import { ShippingComponent } from './shipping/shipping.component';
-import { ValidationComponent } from './shipping/validation/validation.component';
 import { ValidationDirective } from './validation.directive';
-import { CustomValidatorComponent } from './custom-validator/custom-validator.component';
+import { ValidationComponent } from './shared/app-validation/validation.component';
+import { CustomValidatorComponent } from './login-form/login-form.component';
+
+
 
 
 const appRoutes: Routes = [
@@ -42,7 +44,14 @@ const appRoutes: Routes = [
     NgbModule,
     TextMaskModule
   ],
-  declarations: [AppComponent, AddressComponent, ContactFormComponent, AddressFormComponent, ShippingComponent, ValidationComponent, ValidationDirective, CustomValidatorComponent],
+  declarations: [AppComponent,
+    AddressComponent,
+    ContactFormComponent,
+    AddressFormComponent,
+    ShippingComponent,
+    ValidationComponent,
+    ValidationDirective,
+    CustomValidatorComponent],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
