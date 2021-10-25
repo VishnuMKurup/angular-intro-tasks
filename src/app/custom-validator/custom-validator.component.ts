@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { UsernameValidator } from './custom.validator';
+import { customValidator } from './custom.validator';
 
 @Component({
   selector: 'app-custom-validator',
@@ -10,14 +10,10 @@ import { UsernameValidator } from './custom.validator';
 export class CustomValidatorComponent {
   submitted: boolean = false;
   customForm = new FormGroup({
-    email: new FormControl('', [Validators.required, UsernameValidator.mailFormat]),
-    username: new FormControl('', [Validators.required, UsernameValidator.validationSpace]),
+    email: new FormControl('', [Validators.required, customValidator.mailFormat]),
+    username: new FormControl('', [Validators.required, customValidator.validationSpace]),
     password: new FormControl('', Validators.required)
   });
-
-  get f() {
-    return this.customForm.controls;
-  }
 
   submit() {
     this.submitted = true;
