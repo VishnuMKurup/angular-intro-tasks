@@ -1,0 +1,51 @@
+<div class="container">
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header ">
+        <a class="navbar-brand" href="#">Book <strong>Store</strong></a>
+      </div>
+      <ul class="nav navbar-nav navbar-right ">
+        <button class="button" (click)="openPopup()"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add New
+          Book</button>
+      </ul>
+    </div>
+  </nav>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Publisher</th>
+        <th>Genre</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of details; let i=index">
+        <td>{{row.title}}</td>
+        <td>{{row.author}}</td>
+        <td>{{row.publisher}}</td>
+        <td>{{row.genre}}</td>
+        <td>{{row.price}}</td>
+        <td>
+          <i class="fa fa-pencil yellow-color" (click)="openPopupEdit(row)"></i>
+          <i class="fa fa-trash ml-3 red-color" (click)="removeItem(i)"></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="modal d-block" tabindex="-1" role="dialog" *ngIf="displayStyle">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">{{item}}</h4>
+          <i class="fa fa-times" aria-hidden="true" (click)="closePopup()"></i>
+        </div>
+        <div class="modal-body">
+          <app-book (submitValue)="onSubmit($event)" (cancel)="closePopup()" [button]='button' [row]="selectedItem"></app-book>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

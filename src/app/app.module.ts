@@ -12,6 +12,8 @@ import { ShippingComponent } from './shipping/shipping.component';
 import { ValidationDirective } from './validation.directive';
 import { ValidationComponent } from './shared/app-validation/validation.component';
 import { CustomValidatorComponent } from './login-form/login-form.component';
+import { DisplayBookComponent } from './display-book/display-book.component';
+import { BookFormComponent } from './display-book/book-form/book-form.component';
 
 
 
@@ -32,6 +34,10 @@ const appRoutes: Routes = [
   {
     path: 'custom',
     component: CustomValidatorComponent
+  },
+  {
+    path: 'display',
+    component: DisplayBookComponent
   }
 ];
 
@@ -51,7 +57,9 @@ const appRoutes: Routes = [
     ShippingComponent,
     ValidationComponent,
     ValidationDirective,
-    CustomValidatorComponent],
+    CustomValidatorComponent,
+    DisplayBookComponent,
+    BookFormComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
