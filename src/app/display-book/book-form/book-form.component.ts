@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-book',
@@ -13,8 +13,8 @@ export class BookFormComponent implements OnChanges {
   @Output() cancel: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Input() button: string;
   @Input() row: any;
-  @Input() submittedValue: boolean;
   submitted: boolean;
+
   constructor(private fb: FormBuilder) {
     this.bookForm = this.fb.group({
       title: ['', [Validators.required]],
@@ -26,10 +26,10 @@ export class BookFormComponent implements OnChanges {
   }
 
   ngOnChanges() {
-    this.submitted = this.submittedValue;
     if (this.row) {
       this.bookForm.setValue(this.row);
     }
+
   }
 
   submit() {
@@ -43,8 +43,6 @@ export class BookFormComponent implements OnChanges {
   }
 
   closePopup() {
-    this.submitted = false;
     this.cancel.emit(true);
   }
-
 }

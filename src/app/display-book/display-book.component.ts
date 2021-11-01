@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-display-book',
@@ -9,12 +8,13 @@ import { FormGroup } from '@angular/forms';
 
 export class DisplayBookComponent {
 
-  bookForm: FormGroup;
   details: any;
   item: string
   button: string;
   selectedItem: any;
   displayStyle: boolean;
+  displayConfirmation: boolean;
+  removeIndex: number;
   constructor() {
     this.details = [];
   }
@@ -23,6 +23,7 @@ export class DisplayBookComponent {
     this.item = 'Add Book';
     this.button = 'Add';
     this.displayStyle = true;
+    this.selectedItem = null;
   }
 
   closePopup() {
@@ -30,7 +31,8 @@ export class DisplayBookComponent {
   }
 
   removeItem(index: number) {
-    this.details.splice(index, 1);
+    this.displayConfirmation = true;
+    this.removeIndex = index;
   }
 
   openPopupEdit(item) {
@@ -50,5 +52,14 @@ export class DisplayBookComponent {
       this.details.push(value);
       this.closePopup();
     }
+  }
+
+  confirmSucess() {
+    this.details.splice(this.removeIndex, 1);
+    this.displayConfirmation = false;
+  }
+
+  closeConfirmation() {
+    this.displayConfirmation = false;
   }
 }
