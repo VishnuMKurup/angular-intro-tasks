@@ -11,15 +11,15 @@ export class BookFormComponent implements OnChanges {
   bookForm: FormGroup;
   @Output() submitValue = new EventEmitter<any>();
   @Output() cancel: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Input() buttonName: string;
-  @Input() row: any;
+  @Input() buttonSubmitName: string;
+  @Input() formValue: any;
   submitted: boolean;
 
   constructor(private fb: FormBuilder) {
-   this.createForm();
+    this.initBookForm();
   }
 
-  createForm() {
+  initBookForm() {
     this.bookForm = this.fb.group({
       title: ['', [Validators.required]],
       author: ['', [Validators.required]],
@@ -30,16 +30,14 @@ export class BookFormComponent implements OnChanges {
   }
 
   ngOnChanges() {
-    if (this.row) {
-      this.bookForm.setValue(this.row);
+    if (this.formValue) {
+      this.bookForm.setValue(this.formValue);
     }
-
   }
 
   submit() {
     if (this.bookForm.valid) {
       this.submitValue.emit(this.bookForm.value);
-      this.bookForm.reset();
     }
     else {
       this.submitted = true;

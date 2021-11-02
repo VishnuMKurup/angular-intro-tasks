@@ -5,7 +5,7 @@
         <a class="navbar-brand" href="#"> <strong>Book Store</strong></a>
       </div>
       <ul class="nav navbar-nav navbar-right ">
-        <button class="button" (click)="openPopup()"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add New
+        <button class="button" (click)="onAddBook()"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add New
           Book</button>
       </ul>
     </div>
@@ -43,7 +43,7 @@
           <i class="fa fa-times" aria-hidden="true" (click)="closePopup()"></i>
         </div>
         <div class="modal-body">
-          <app-book (submitValue)="onSubmit($event)" (cancel)="closePopup()" [buttonName]="buttonName" [row]="selectedItem">
+          <app-book (submitValue)="onSubmit($event)" (cancel)="closePopup()" [buttonSubmitName]="submitButtonName" [formValue]="selectedItem">
           </app-book>
         </div>
       </div>

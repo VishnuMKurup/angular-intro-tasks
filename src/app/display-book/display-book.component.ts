@@ -7,21 +7,21 @@ import { Component } from '@angular/core';
 })
 
 export class DisplayBookComponent {
-
   bookListingArray: any;
   popupTitle: string
-  buttonName: string;
+  submitButtonName: string;
   selectedItem: any;
   isBookFormOpen: boolean;
   isConfirmationOpen: boolean;
-  removeIndex: number;
+  selectedIndex: number;
+
   constructor() {
     this.bookListingArray = [];
   }
 
-  openPopup() {
+  onAddBook() {
     this.popupTitle = 'Add Book';
-    this.buttonName = 'Add';
+    this.submitButtonName = 'Add';
     this.isBookFormOpen = true;
     this.selectedItem = null;
   }
@@ -32,12 +32,12 @@ export class DisplayBookComponent {
 
   removeItem(index: number) {
     this.isConfirmationOpen = true;
-    this.removeIndex = index;
+    this.selectedIndex = index;
   }
 
   openPopupEdit(item) {
     this.popupTitle = 'Edit';
-    this.buttonName = 'Update';
+    this.submitButtonName = 'Update';
     this.selectedItem = item;
     this.isBookFormOpen = true;
   }
@@ -55,7 +55,7 @@ export class DisplayBookComponent {
   }
 
   confirmSucess() {
-    this.bookListingArray.splice(this.removeIndex, 1);
+    this.bookListingArray.splice(this.selectedIndex, 1);
     this.isConfirmationOpen = false;
   }
 
