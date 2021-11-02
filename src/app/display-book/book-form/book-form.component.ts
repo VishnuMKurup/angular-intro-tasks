@@ -7,7 +7,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./book-form.component.scss']
 })
 export class BookFormComponent implements OnChanges {
-
   bookForm: FormGroup;
   @Output() submitValue = new EventEmitter<any>();
   @Output() cancel: EventEmitter<boolean> = new EventEmitter<boolean>();
