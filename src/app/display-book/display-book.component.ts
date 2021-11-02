@@ -8,58 +8,58 @@ import { Component } from '@angular/core';
 
 export class DisplayBookComponent {
 
-  details: any;
-  item: string
-  button: string;
+  bookListingArray: any;
+  popupTitle: string
+  buttonName: string;
   selectedItem: any;
-  displayStyle: boolean;
-  displayConfirmation: boolean;
+  isBookFormOpen: boolean;
+  isConfirmationOpen: boolean;
   removeIndex: number;
   constructor() {
-    this.details = [];
+    this.bookListingArray = [];
   }
 
   openPopup() {
-    this.item = 'Add Book';
-    this.button = 'Add';
-    this.displayStyle = true;
+    this.popupTitle = 'Add Book';
+    this.buttonName = 'Add';
+    this.isBookFormOpen = true;
     this.selectedItem = null;
   }
 
   closePopup() {
-    this.displayStyle = false;
+    this.isBookFormOpen = false;
   }
 
   removeItem(index: number) {
-    this.displayConfirmation = true;
+    this.isConfirmationOpen = true;
     this.removeIndex = index;
   }
 
   openPopupEdit(item) {
-    this.item = 'Edit';
-    this.button = 'Update';
+    this.popupTitle = 'Edit';
+    this.buttonName = 'Update';
     this.selectedItem = item;
-    this.displayStyle = true;
+    this.isBookFormOpen = true;
   }
 
   onSubmit(value) {
     if (this.selectedItem) {
-      let index = this.details.indexOf(this.selectedItem);
-      this.details[index] = value;
+      let index = this.bookListingArray.indexOf(this.selectedItem);
+      this.bookListingArray[index] = value;
       this.closePopup();
     }
     else {
-      this.details.push(value);
+      this.bookListingArray.push(value);
       this.closePopup();
     }
   }
 
   confirmSucess() {
-    this.details.splice(this.removeIndex, 1);
-    this.displayConfirmation = false;
+    this.bookListingArray.splice(this.removeIndex, 1);
+    this.isConfirmationOpen = false;
   }
 
   closeConfirmation() {
-    this.displayConfirmation = false;
+    this.isConfirmationOpen = false;
   }
 }

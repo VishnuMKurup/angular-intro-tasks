@@ -11,11 +11,15 @@ export class BookFormComponent implements OnChanges {
   bookForm: FormGroup;
   @Output() submitValue = new EventEmitter<any>();
   @Output() cancel: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Input() button: string;
+  @Input() buttonName: string;
   @Input() row: any;
   submitted: boolean;
 
   constructor(private fb: FormBuilder) {
+   this.createForm();
+  }
+
+  createForm() {
     this.bookForm = this.fb.group({
       title: ['', [Validators.required]],
       author: ['', [Validators.required]],
