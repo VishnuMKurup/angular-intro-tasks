@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AddressComponent } from './address/address.component';
-import { AngularInternshipComponent } from './angular-internship/angular-internship.component';
+import { TaskListingComponent } from './task-listing/task-listing.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { DisplayBookComponent } from './display-book/display-book.component';
 import { CustomValidatorComponent } from './login-form/login-form.component';
@@ -10,7 +10,7 @@ import { ShippingComponent } from './shipping/shipping.component';
 const routes: Routes = [
   {
     path: '',
-    component: AngularInternshipComponent
+    component: TaskListingComponent
   },
   {
     path: 'shipping',

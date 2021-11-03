@@ -14,40 +14,14 @@ import { CustomValidatorComponent } from './login-form/login-form.component';
 import { DisplayBookComponent } from './display-book/display-book.component';
 import { BookFormComponent } from './display-book/book-form/book-form.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AngularInternshipComponent } from './angular-internship/angular-internship.component';
+import { TaskListingComponent } from './task-listing/task-listing.component';
 
-
-
-
-// const appRoutes: Routes = [
-//   {
-//     path: '',
-//     component: ShippingComponent
-//   },
-//   {
-//     path: 'contact',
-//     component: ContactFormComponent
-//   },
-//   {
-//     path: 'address',
-//     component: AddressComponent
-//   },
-//   {
-//     path: 'custom',
-//     component: CustomValidatorComponent
-//   },
-//   {
-//     path: 'display',
-//     component: DisplayBookComponent
-//   }
-// ];
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-   // RouterModule.forRoot(routes),
     ReactiveFormsModule,
     NgbModule,
     TextMaskModule
@@ -62,7 +36,7 @@ import { AngularInternshipComponent } from './angular-internship/angular-interns
     CustomValidatorComponent,
     DisplayBookComponent,
     BookFormComponent,
-    AngularInternshipComponent],
+    TaskListingComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
