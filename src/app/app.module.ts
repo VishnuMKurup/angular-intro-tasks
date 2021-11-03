@@ -15,8 +15,6 @@ import { DisplayBookComponent } from './display-book/display-book.component';
 import { BookFormComponent } from './display-book/book-form/book-form.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TaskListingComponent } from './task-listing/task-listing.component';
-
-
 @NgModule({
   imports: [
     BrowserModule,
