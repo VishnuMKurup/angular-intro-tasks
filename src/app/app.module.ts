@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
-import { RouterModule, Routes } from '@angular/router';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { TextMaskModule } from 'angular2-text-mask';
 import { AddressComponent } from './address/address.component';
@@ -14,38 +13,41 @@ import { ValidationComponent } from './shared/app-validation/validation.componen
 import { CustomValidatorComponent } from './login-form/login-form.component';
 import { DisplayBookComponent } from './display-book/display-book.component';
 import { BookFormComponent } from './display-book/book-form/book-form.component';
+import { AppRoutingModule } from './app-routing.module';
+import { AngularInternshipComponent } from './angular-internship/angular-internship.component';
 
 
 
 
-const appRoutes: Routes = [
-  {
-    path: '',
-    component: ShippingComponent
-  },
-  {
-    path: 'contact',
-    component: ContactFormComponent
-  },
-  {
-    path: 'address',
-    component: AddressComponent
-  },
-  {
-    path: 'custom',
-    component: CustomValidatorComponent
-  },
-  {
-    path: 'display',
-    component: DisplayBookComponent
-  }
-];
+// const appRoutes: Routes = [
+//   {
+//     path: '',
+//     component: ShippingComponent
+//   },
+//   {
+//     path: 'contact',
+//     component: ContactFormComponent
+//   },
+//   {
+//     path: 'address',
+//     component: AddressComponent
+//   },
+//   {
+//     path: 'custom',
+//     component: CustomValidatorComponent
+//   },
+//   {
+//     path: 'display',
+//     component: DisplayBookComponent
+//   }
+// ];
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes),
+    AppRoutingModule,
+   // RouterModule.forRoot(routes),
     ReactiveFormsModule,
     NgbModule,
     TextMaskModule
@@ -59,7 +61,8 @@ const appRoutes: Routes = [
     ValidationDirective,
     CustomValidatorComponent,
     DisplayBookComponent,
-    BookFormComponent],
+    BookFormComponent,
+    AngularInternshipComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

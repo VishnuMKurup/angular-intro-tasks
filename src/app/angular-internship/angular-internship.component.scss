@@ -1,0 +1,29 @@
+ol
+{
+line-height:300%
+}
+a:link {
+    color: red;
+  }
+  
+  a:visited {
+    color: blue;
+  }
+  
+  a:focus {
+    border-bottom: 1px solid;
+    background: #BAE498;
+  }
+  
+  a:hover {
+    border-bottom: 1px solid;
+    background: red;
+  }
+  
+  a:active {
+    background: green;
+    color: #CDFEAA;
+  }
+  .navbar-dark .navbar-brand {
+    color: orange;
+}
