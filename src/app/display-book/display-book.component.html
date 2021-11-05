@@ -27,7 +27,7 @@
         <td>{{row.author}}</td>
         <td>{{row.publisher}}</td>
         <td>{{row.genre}}</td>
-        <td>{{row.price}}</td>
+        <td>{{row.price|decimal}}</td>
         <td>
           <i class="fa fa-pencil yellow-color" (click)="openPopupEdit(row)"></i>
           <i class="fa fa-trash ml-3 red-color" (click)="removeItem(i)"></i>

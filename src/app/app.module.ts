@@ -8,13 +8,14 @@ import { TextMaskModule } from 'angular2-text-mask';
 import { AddressComponent } from './address/address.component';
 import { AddressFormComponent } from './address/address-form/address-form.component';
 import { ShippingComponent } from './shipping/shipping.component';
-import { ValidationDirective } from './validation.directive';
+import { ValidationDirective } from './directives/validation.directive';
 import { ValidationComponent } from './shared/app-validation/validation.component';
 import { CustomValidatorComponent } from './login-form/login-form.component';
 import { DisplayBookComponent } from './display-book/display-book.component';
 import { BookFormComponent } from './display-book/book-form/book-form.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TaskListingComponent } from './task-listing/task-listing.component';
+import { DecimalPipe } from './pipes/decimal.pipe';
 @NgModule({
   imports: [
     BrowserModule,
@@ -34,7 +35,8 @@ import { TaskListingComponent } from './task-listing/task-listing.component';
     CustomValidatorComponent,
     DisplayBookComponent,
     BookFormComponent,
-    TaskListingComponent],
+    TaskListingComponent,
+    DecimalPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
