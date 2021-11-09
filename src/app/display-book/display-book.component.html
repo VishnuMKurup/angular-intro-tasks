@@ -27,7 +27,7 @@
         <td>{{row.author}}</td>
         <td>{{row.publisher}}</td>
         <td>{{row.genre}}</td>
-        <td>{{row.price | decimal | currency}}</td>
+        <td>{{row.price | currency}}</td>
         <td>
           <i class="fa fa-pencil yellow-color" (click)="openPopupEdit(row)"></i>
           <i class="fa fa-trash ml-3 red-color" (click)="removeItem(i)"></i>
@@ -43,7 +43,8 @@
           <i class="fa fa-times" aria-hidden="true" (click)="closePopup()"></i>
         </div>
         <div class="modal-body">
-          <app-book (submitValue)="onSubmit($event)" (cancel)="closePopup()" [buttonSubmitName]="submitButtonName" [formValue]="selectedItem">
+          <app-book (submitValue)="onSubmit($event)" (cancel)="closePopup()" [buttonSubmitName]="submitButtonName"
+            [formValue]="selectedItem">
           </app-book>
         </div>
       </div>
