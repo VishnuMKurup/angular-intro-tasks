@@ -7,12 +7,12 @@ export class DecimalPipe implements PipeTransform {
 
   transform(value: number): number {
     if (value % 0.5 === 0) {
-      var num1 = Math.floor((value * 100) / 100);
-      return num1;
+      var price = Math.floor((value * 100) / 100);
+      return price;
     }
     else {
-      var num1 = Math.round((value * 100) / 100);
-      return num1;
+      var price = Math.round((value * 100) / 100);
+      return price;
     }
   }
 }
