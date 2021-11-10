@@ -1,10 +1,12 @@
 import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DecimalPipe } from 'src/app/pipes/decimal.pipe';
 
 @Component({
   selector: 'app-book',
   templateUrl: './book-form.component.html',
-  styleUrls: ['./book-form.component.scss']
+  styleUrls: ['./book-form.component.scss'],
+  providers: [DecimalPipe]
 })
 export class BookFormComponent implements OnChanges {
   bookForm: FormGroup;
@@ -14,7 +16,7 @@ export class BookFormComponent implements OnChanges {
   @Input() formValue: any;
   submitted: boolean;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private decimalPipe: DecimalPipe) {
     this.initBookForm();
   }
 
@@ -36,6 +38,7 @@ export class BookFormComponent implements OnChanges {
 
   submit() {
     if (this.bookForm.valid) {
+      this.bookForm.value.price = this.decimalPipe.transform(this.bookForm.value.price);
       this.submitValue.emit(this.bookForm.value);
     }
     else {

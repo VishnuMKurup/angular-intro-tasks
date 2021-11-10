@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
-import { DecimalPipe } from '../pipes/decimal.pipe';
 
 @Component({
   selector: 'app-display-book',
   templateUrl: './display-book.component.html',
-  styleUrls: ['./display-book.component.scss'],
-  providers: [DecimalPipe]
+  styleUrls: ['./display-book.component.scss']
 })
 
 export class DisplayBookComponent {
@@ -17,7 +15,7 @@ export class DisplayBookComponent {
   isConfirmationOpen: boolean;
   selectedIndex: number;
 
-  constructor(private decimalPipe: DecimalPipe) {
+  constructor() {
     this.bookListingArray = [];
   }
 
@@ -47,12 +45,10 @@ export class DisplayBookComponent {
   onSubmit(value) {
     if (this.selectedItem) {
       let index = this.bookListingArray.indexOf(this.selectedItem);
-      value.price = this.decimalPipe.transform(value.price);
       this.bookListingArray[index] = value;
       this.closePopup();
     }
     else {
-      value.price = this.decimalPipe.transform(value.price);
       this.bookListingArray.push(value);
       this.closePopup();
     }
