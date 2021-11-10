@@ -1,0 +1,65 @@
+<div class="container">
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+<div class="row">
+    <div class="col-md-6 mb-2">
+        <label for="street_address1">Address 1
+            <small class="text-danger">*</small>
+        </label>
+        <input type="text" id="street_address1"  placeholder="street_address*" class="form-control" formControlName="street_address1" [appValidation]="submitted">
+        <app-validation [submitted]="submitted" name="Address1"
+        [control]="userForm.get('street_address1')">
+      </app-validation>
+    </div>
+    <div class="col-md-6 mb-2">
+        <label for="street_address2">Address 2</label>
+        <input type="text" id="street_address2"  placeholder="street_address2" class="form-control" formControlName="street_address2">
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 mb-2">
+        <label for="city">City
+            <small class="text-danger">*</small>
+        </label>
+        <input type="text" id="city" placeholder="City" class="form-control" formControlName="city">
+    </div>
+    <div class="col-md-6 mb-2">
+        <label for="state">State
+            <small class="text-danger">*</small>
+        </label>
+        <div *ngIf="userForm.get('country').value === 'US'">
+            <select formControlName="state" class="form-control" [appValidation]="submitted">
+                <option value="">Select</option>
+                <option *ngFor="let item of stateList" [value]="item.code">{{item.code}} - {{item.name}}</option>
+            </select>
+        </div>
+        <input formControlName="state"  placeholder="State*" *ngIf="userForm.get('country').value !== 'US'" type="text"
+            class="form-control" [appValidation]="submitted">
+            <app-validation [submitted]="submitted" name="State" [control]="userForm.get('state')">
+            </app-validation>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 mb-2">
+        <label for="country">Country
+            <small class="text-danger">*</small>
+        </label>
+        <select formControlName="country" class="form-control" [appValidation]="submitted">
+            <option value="">Country*</option>
+            <option *ngFor="let item of countryList" [value]="item.code">{{item.name}}</option>
+        </select>
+        <app-validation [submitted]="submitted" name="Country" [control]="userForm.get('country')">
+        </app-validation>
+    </div>
+    <div class="col-md-6 mb-2">
+        <label for="zip">Zip
+            <small class="text-danger">*</small>
+        </label>
+        <input type="text" id="zip" class="form-control" placeholder="Zip*" formControlName="zip" [appValidation]="submitted">
+        <app-validation [submitted]="submitted" name="Zip"
+        [control]="userForm.get('zip')">
+      </app-validation>
+    </div>
+</div>
+<button type="submit" class="btn btn-primary float-right mt-2">SAVE</button>
+</form>
+</div>

@@ -16,6 +16,8 @@ import { BookFormComponent } from './display-book/book-form/book-form.component'
 import { AppRoutingModule } from './app-routing.module';
 import { TaskListingComponent } from './task-listing/task-listing.component';
 import { DecimalPipe } from './pipes/decimal.pipe';
+import { UserFormComponent } from './user-form/user-form.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   imports: [
     BrowserModule,
@@ -23,7 +25,8 @@ import { DecimalPipe } from './pipes/decimal.pipe';
     AppRoutingModule,
     ReactiveFormsModule,
     NgbModule,
-    TextMaskModule
+    TextMaskModule,
+    HttpClientModule
   ],
   declarations: [AppComponent,
     AddressComponent,
@@ -36,7 +39,8 @@ import { DecimalPipe } from './pipes/decimal.pipe';
     DisplayBookComponent,
     BookFormComponent,
     TaskListingComponent,
-    DecimalPipe],
+    DecimalPipe,
+    UserFormComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

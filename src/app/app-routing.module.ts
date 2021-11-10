@@ -6,6 +6,7 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
 import { DisplayBookComponent } from './display-book/display-book.component';
 import { CustomValidatorComponent } from './login-form/login-form.component';
 import { ShippingComponent } from './shipping/shipping.component';
+import { UserFormComponent } from './user-form/user-form.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'display',
     component: DisplayBookComponent
+  },
+  {
+    path: 'user',
+    component: UserFormComponent
   }
 ];
 
