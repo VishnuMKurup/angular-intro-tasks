@@ -16,7 +16,7 @@ export class BookFormComponent implements OnChanges {
   @Input() formValue: any;
   submitted: boolean;
 
-  constructor(private fb: FormBuilder, private decimalPipe: DecimalPipe) {
+  constructor(private fb: FormBuilder,private decimalPipe: DecimalPipe) {
     this.initBookForm();
   }
 
