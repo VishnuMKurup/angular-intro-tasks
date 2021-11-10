@@ -13,7 +13,7 @@ export class UserFormComponent implements OnInit {
   countryList: {};
   stateList: {};
 
-  constructor(private fb: FormBuilder,private dataservice: DataService) { }
+  constructor(private fb: FormBuilder, private dataservice: DataService) { }
 
   ngOnInit(): void {
     this.dataservice.getData().subscribe(data => {

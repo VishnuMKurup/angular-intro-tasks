@@ -7,7 +7,6 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class DataService {
-
   apiBaseUrl = ' https://pod2-dlp.fayastage.com:7004/api/m/country_state_list';
 
   constructor(private http: HttpClient) { }
@@ -17,7 +16,6 @@ export class DataService {
       catchError(this.handleError)
     );
   }
-
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
