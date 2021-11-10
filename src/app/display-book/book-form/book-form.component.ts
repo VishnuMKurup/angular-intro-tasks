@@ -38,7 +38,7 @@ export class BookFormComponent implements OnChanges {
 
   submit() {
     if (this.bookForm.valid) {
-      this.bookForm.value.price = this.decimalPipe.transform(this.bookForm.value.price);
+      this.bookForm.get('price').setValue(this.decimalPipe.transform(this.bookForm.value.price));
       this.submitValue.emit(this.bookForm.value);
     }
     else {
