@@ -10,7 +10,7 @@ import { DecimalPipe } from 'src/app/pipes/decimal.pipe';
 })
 export class BookFormComponent implements OnChanges {
   bookForm: FormGroup;
-  @Output() submitValue = new EventEmitter<any>();
+  @Output() submitValue: EventEmitter<any> = new EventEmitter<any>();
   @Output() cancel: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Input() buttonSubmitName: string;
   @Input() formValue: any;
