@@ -7,12 +7,12 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class DataService {
-  apiBaseUrl = ' https://pod2-dlp.fayastage.com:7004/api/m/country_state_list';
+  countryStateListUrl = ' https://pod2-dlp.fayastage.com:7004/api/m/country_state_list';
 
   constructor(private http: HttpClient) { }
 
   getData() {
-    return this.http.get(this.apiBaseUrl).pipe(
+    return this.http.get(this.countryStateListUrl).pipe(
       catchError(this.handleError)
     );
   }

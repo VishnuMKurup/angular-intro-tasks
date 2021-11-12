@@ -10,8 +10,9 @@ import { DataService } from '../services/data.service';
 export class UserFormComponent implements OnInit {
   userForm: FormGroup;
   submitted: boolean;
-  countryList: any=[];
-  stateList: any=[];
+  countryList: any = [];
+  stateList: any = [];
+  errorMessage: any;
 
   constructor(private fb: FormBuilder, private dataservice: DataService) { }
 
@@ -19,6 +20,10 @@ export class UserFormComponent implements OnInit {
     this.dataservice.getData().subscribe(data => {
       this.countryList = data['countries'];
       this.stateList = data['state'];
+    }, error => {
+      console.error('error caught in component');
+      this.errorMessage = error;
+      throw error;
     });
     this.initAddressForm();
   }
