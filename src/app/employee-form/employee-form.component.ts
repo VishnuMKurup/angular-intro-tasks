@@ -15,7 +15,6 @@ export class EmployeeFormComponent {
   });
   constructor(private http: HttpClient) { }
 
-
   submit() {
     this.submitted = true;
     this.http.post('https://reqres.in/api/users', this.employeeForm.value)
