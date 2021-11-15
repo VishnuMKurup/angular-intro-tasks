@@ -1,0 +1,17 @@
+<form [formGroup]="employeeForm" (ngSubmit)="submit()">
+    <div class="row">
+        <div class="col-md-6 mb-2">
+            <label>Name</label>
+            <input formControlName="name" id="name" type="text" class="form-control" [appValidation]="submitted">
+            <app-validation [submitted]="submitted" name="Name" [control]="employeeForm.get('name')">
+            </app-validation>
+        </div>
+        <div class="col-md-6 mb-2">
+            <label>Job</label>
+            <input formControlName="job" id="job" type="text" class="form-control" [appValidation]="submitted">
+            <app-validation [submitted]="submitted" name="Job" [control]="employeeForm.get('job')">
+            </app-validation>
+        </div>
+    </div>
+    <button class="btn btn-primary float-right" type="submit">Submit</button>
+</form>
