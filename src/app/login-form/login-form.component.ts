@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { customValidator } from '../shared/custom-validator/custom.validator';
 
 @Component({
@@ -8,12 +8,20 @@ import { customValidator } from '../shared/custom-validator/custom.validator';
   styleUrls: ['./login-form.component.scss']
 })
 export class CustomValidatorComponent {
-  submitted: boolean = false;
-  customForm = new FormGroup({
-    email: new FormControl('', [Validators.required, customValidator.mailFormat]),
-    username: new FormControl('', [Validators.required, customValidator.validationSpace]),
-    password: new FormControl('', Validators.required)
-  });
+  submitted: boolean;
+  customForm: FormGroup;
+
+  constructor(private fb: FormBuilder) {
+    this.initCustomForm();
+  }
+
+  initCustomForm() {
+    this.customForm = this.fb.group({
+      'email': ['', [Validators.required, customValidator.mailFormat]],
+      'username': ['', [Validators.required, customValidator.validationSpace]],
+      'password': ['', [Validators.required]]
+    });
+  }
 
   submit() {
     this.submitted = true;
@@ -21,6 +29,4 @@ export class CustomValidatorComponent {
       console.log(this.customForm.value);
     }
   }
-  constructor() { }
-
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DataService } from '../services/data.service';
+import { CrudService } from '../services/crud.service';
 
 @Component({
   selector: 'app-user-form',
@@ -14,7 +14,7 @@ export class UserFormComponent implements OnInit {
   stateList: any = [];
   errorMessage: any;
 
-  constructor(private fb: FormBuilder, private dataservice: DataService) { }
+  constructor(private fb: FormBuilder, private dataservice: CrudService) { }
 
   ngOnInit(): void {
     this.dataservice.getData().subscribe(data => {
@@ -46,4 +46,5 @@ export class UserFormComponent implements OnInit {
       console.log(this.userForm.value);
     }
   }
+
 }
