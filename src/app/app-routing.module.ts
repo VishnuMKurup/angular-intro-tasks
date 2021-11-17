@@ -8,11 +8,16 @@ import { CustomValidatorComponent } from './login-form/login-form.component';
 import { ShippingComponent } from './shipping/shipping.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { EmployeeFormComponent } from './employee-form/employee-form.component';
+import { EmployeeListingComponent } from './employee-listing/employee-listing.component';
 
 const routes: Routes = [
   {
     path: '',
     component: TaskListingComponent
+  },
+  {
+    path: 'employeelisting',
+    component: EmployeeListingComponent
   },
   {
     path: 'employee',

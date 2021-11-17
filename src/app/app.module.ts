@@ -19,6 +19,8 @@ import { DecimalPipe } from './pipes/decimal.pipe';
 import { UserFormComponent } from './user-form/user-form.component';
 import { HttpClientModule } from '@angular/common/http';
 import { EmployeeFormComponent } from './employee-form/employee-form.component';
+import { EmployeeListingComponent } from './employee-listing/employee-listing.component';
+import { ListingFormComponent } from './employee-listing/listing-form/listing-form.component';
 @NgModule({
   imports: [
     BrowserModule,
@@ -42,7 +44,9 @@ import { EmployeeFormComponent } from './employee-form/employee-form.component';
     TaskListingComponent,
     DecimalPipe,
     UserFormComponent,
-    EmployeeFormComponent],
+    EmployeeFormComponent,
+    EmployeeListingComponent,
+    ListingFormComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -7,9 +7,10 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class CrudService {
-  updateUrl= 'https://reqres.in/api/users/2';
-  usersUrl = 'https://reqres.in/api/users';
+  updateUrl = 'https://retoolapi.dev/dOHcE8/data/31';
+  usersUrl = 'https://retoolapi.dev/dOHcE8/data';
   countryStateListUrl = ' https://pod2-dlp.fayastage.com:7004/api/m/country_state_list';
+  EmployeeUrl = 'https://retoolapi.dev/sFlOCx/intern_task';
 
   constructor(private http: HttpClient) { }
 
@@ -19,13 +20,37 @@ export class CrudService {
     );
   }
 
-  postData(data) {// post data to usersUrl
-    return this.http.post(this.usersUrl,data).pipe(
+  getEmployee() {//get country and state list from countryStateList Url
+    return this.http.get(this.EmployeeUrl).pipe(
       catchError(this.handleError)
     );
   }
 
-  editData(data){// update data
+  postEmployee(data) {// post data to usersUrl
+    return this.http.post(this.EmployeeUrl, data).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  editEmployee(id, data) {// update data
+    return this.http.put(`${this.EmployeeUrl}/${id}`, data).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  deleteEmployee(id) {// delete data
+    return this.http.delete(`${this.EmployeeUrl}/${id}`).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  postData(data) {// post data to usersUrl
+    return this.http.post(this.usersUrl, data).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  editData(data) {// edit data
     return this.http.put(this.updateUrl, data).pipe(
       catchError(this.handleError)
     );
