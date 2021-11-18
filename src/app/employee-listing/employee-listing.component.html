@@ -74,17 +74,17 @@
       <div class="modal-body">
         <div class="row">
           <div class="col-md-6 mb-2">
-        <label>Employee Name: {{employeeDetails.employee_name}}</label>
+            <label>Employee Name: {{employeeDetails.employee_name}}</label>
           </div>
-        <label>Status: {{employeeDetails.status ? 'Active' : 'Inactive'}}</label>
+          <label>Status: {{employeeDetails.status ? 'Active' : 'Inactive'}}</label>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-2">
+            <label>Employee Experience: {{employeeDetails.employee_experiance}}</label>
           </div>
-          <div class="row">
-            <div class="col-md-6 mb-2">
-        <label>Employee Experience: {{employeeDetails.employee_experiance}}</label>
-            </div>
-        <label>Employee Designation: {{employeeDetails.employee_designation}}</label>
-          </div>
-        <button class="btn btn-danger" (click)="closeEmployee()">Cancel</button>
+          <label>Employee Designation: {{employeeDetails.employee_designation}}</label>
+        </div>
+        <button class="btn btn-danger" (click)="closeEmployeeById()">Cancel</button>
       </div>
     </div>
   </div>

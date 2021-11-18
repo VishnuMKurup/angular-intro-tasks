@@ -70,7 +70,8 @@ export class EmployeeListingComponent {
   closePopup() {
     this.isEmployeeFormOpen = false;
   }
-  closeEmployee() {
+
+  closeEmployeeById() {
     this.isEmployeeOpen = false;
   }
 
@@ -118,13 +119,6 @@ export class EmployeeListingComponent {
 
   onFilter() {
     console.log('hi');
-    // this.crud.filterEmployee().subscribe(data => {
-    //   this.employeeListingArray = data;
-    // }, error => {
-    //   console.error('error caught in component');
-    //   this.errorMessage = error;
-    //   throw error;
-    // });
   }
 
 }
