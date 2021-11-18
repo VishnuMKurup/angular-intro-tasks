@@ -10,7 +10,7 @@ export class CrudService {
   updateUrl = 'https://retoolapi.dev/dOHcE8/data/31';
   usersUrl = 'https://retoolapi.dev/dOHcE8/data';
   countryStateListUrl = ' https://pod2-dlp.fayastage.com:7004/api/m/country_state_list';
-  EmployeeUrl = 'https://retoolapi.dev/sFlOCx/intern_task';
+  employeeUrl = 'https://retoolapi.dev/sFlOCx/intern_task';
 
   constructor(private http: HttpClient) { }
 
@@ -21,25 +21,31 @@ export class CrudService {
   }
 
   getEmployee() {//get country and state list from countryStateList Url
-    return this.http.get(this.EmployeeUrl).pipe(
+    return this.http.get(this.employeeUrl).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  filterEmployee() {
+    return this.http.get(`${this.employeeUrl}?$status=true`).pipe(
       catchError(this.handleError)
     );
   }
 
   postEmployee(data) {// post data to usersUrl
-    return this.http.post(this.EmployeeUrl, data).pipe(
+    return this.http.post(this.employeeUrl, data).pipe(
       catchError(this.handleError)
     );
   }
 
   editEmployee(id, data) {// update data
-    return this.http.put(`${this.EmployeeUrl}/${id}`, data).pipe(
+    return this.http.put(`${this.employeeUrl}/${id}`, data).pipe(
       catchError(this.handleError)
     );
   }
 
   deleteEmployee(id) {// delete data
-    return this.http.delete(`${this.EmployeeUrl}/${id}`).pipe(
+    return this.http.delete(`${this.employeeUrl}/${id}`).pipe(
       catchError(this.handleError)
     );
   }
@@ -52,6 +58,12 @@ export class CrudService {
 
   editData(data) {// edit data
     return this.http.put(this.updateUrl, data).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  getEmployeeById(id: number) {
+    return this.http.get(`${this.employeeUrl}/${id}`).pipe(
       catchError(this.handleError)
     );
   }

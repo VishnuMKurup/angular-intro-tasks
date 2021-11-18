@@ -18,9 +18,9 @@ import { TaskListingComponent } from './task-listing/task-listing.component';
 import { DecimalPipe } from './pipes/decimal.pipe';
 import { UserFormComponent } from './user-form/user-form.component';
 import { HttpClientModule } from '@angular/common/http';
-import { EmployeeFormComponent } from './employee-form/employee-form.component';
+import { EmployeeFormComponent } from './test-api-form/test-api-form.component';
 import { EmployeeListingComponent } from './employee-listing/employee-listing.component';
-import { ListingFormComponent } from './employee-listing/listing-form/listing-form.component';
+import { ListingFormComponent } from './employee-listing/employee-form/employee-form.component';
 @NgModule({
   imports: [
     BrowserModule,

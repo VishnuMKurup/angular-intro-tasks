@@ -1,66 +1,91 @@
 <div class="container">
-    <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <div class="navbar-header ">
-          <a class="navbar-brand" href="#"> <strong>Employee Listing</strong></a>
-        </div>
-        <ul class="nav navbar-nav navbar-right ">
-            <button type="button" (click)="onAddEmployee()">Add Employee</button>
-        </ul>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header ">
+        <a class="navbar-brand" href="#"> <strong>Employee Listing</strong></a>
       </div>
-    </nav>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Status</th>
-          <th>Employee Name</th>
-          <th>Employee Experience</th>
-          <th>Employee Designation</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let row of employeeListingArray; let i=index">
-          <td>{{row.status}}</td>
-          <td>{{row.employee_name}}</td>
-          <td>{{row.employee_experiance}}</td>
-          <td>{{row.employee_designation}}</td>
-          <td>
-            <i class="fa fa-pencil yellow-color" (click)="onEditEmployee(row)"></i>
-            <i class="fa fa-trash ml-3 red-color" (click)="removeItem(row.id)"></i>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="modal d-block" tabindex="-1" role="dialog" *ngIf="isEmployeeFormOpen">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">{{popupTitle}}</h4>
-            <i class="fa fa-times" aria-hidden="true" (click)="closePopup()"></i>
-          </div>
-          <div class="modal-body">
-            <app-listing-form (submitValue)="onSubmit($event)" (cancel)="closePopup()" [buttonSubmitName]="submitButtonName"
-              [formValue]="selectedItem">
-            </app-listing-form>
-          </div>
-        </div>
-      </div>
+      <ul class="nav navbar-nav navbar-right ">
+        <button type="button" (click)="onAddEmployee()">Add Employee</button>
+      </ul>
     </div>
-  </div>
-  <div class="modal d-block" tabindex="-1" role="dialog" *ngIf="isConfirmationOpen">
+  </nav>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Employee Name</th>
+        <th>Status</th>
+        <th>Employee Experience</th>
+        <th>Employee Designation</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of employeeListingArray; let i=index">
+        <td>{{row.employee_name}}</td>
+        <td>{{row.status === 'true' ? 'Active' : 'Inactive'}}</td>
+        <td>{{row.employee_experiance}}</td>
+        <td>{{row.employee_designation}}</td>
+        <td>
+          <i class="fa fa-eye" aria-hidden="true" (click)="onViewEmployee(row)"></i>
+          <i class="fa fa-pencil yellow-color ml-3" (click)="onEditEmployee(row)"></i>
+          <i class="fa fa-trash ml-3 red-color" (click)="removeItem(row.id)"></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="modal d-block" tabindex="-1" role="dialog" *ngIf="isEmployeeFormOpen">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Confirmation</h4>
+          <h4 class="modal-title">{{popupTitle}}</h4>
+          <i class="fa fa-times" aria-hidden="true" (click)="closePopup()"></i>
         </div>
         <div class="modal-body">
-          <p>
-            Are You Sure you want to delete
-          </p>
-          <button class="btn btn-primary" (click)="confirmSucess(i)">Confirm</button>
-          <button class="btn btn-danger ml-2" (click)="closeConfirmation()">Cancel</button>
+          <app-employee-form (submitValue)="onSubmit($event)" (cancel)="closePopup()"
+            [buttonSubmitName]="submitButtonName" [formValue]="selectedItem">
+          </app-employee-form>
         </div>
       </div>
     </div>
   </div>
+</div>
+<div class="modal d-block" tabindex="-1" role="dialog" *ngIf="isConfirmationOpen">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Confirmation</h4>
+      </div>
+      <div class="modal-body">
+        <p>
+          Are You Sure you want to delete
+        </p>
+        <button class="btn btn-primary" (click)="confirmSucess(i)">Confirm</button>
+        <button class="btn btn-danger ml-2" (click)="closeConfirmation()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal d-block" tabindex="-1" role="dialog" *ngIf="isEmployeeOpen">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Employee By Id</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6 mb-2">
+        <label>Employee Name: {{employeeDetails.employee_name}}</label>
+          </div>
+        <label>Status: {{employeeDetails.status ? 'Active' : 'Inactive'}}</label>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-2">
+        <label>Employee Experience: {{employeeDetails.employee_experiance}}</label>
+            </div>
+        <label>Employee Designation: {{employeeDetails.employee_designation}}</label>
+          </div>
+        <button class="btn btn-danger" (click)="closeEmployee()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

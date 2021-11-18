@@ -3,9 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CrudService } from '../services/crud.service';
 
 @Component({
-  selector: 'app-employee-form',
-  templateUrl: './employee-form.component.html',
-  styleUrls: ['./employee-form.component.scss']
+  selector: 'app-test-api-form',
+  templateUrl: './test-api-form.component.html',
+  styleUrls: ['./test-api-form.component.scss']
 })
 export class EmployeeFormComponent {
   submitted: boolean;

@@ -1,14 +1,15 @@
 import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { customValidator } from 'src/app/shared/custom-validator/custom.validator';
 
 @Component({
-  selector: 'app-listing-form',
-  templateUrl: './listing-form.component.html',
-  styleUrls: ['./listing-form.component.scss']
+  selector: 'app-employee-form',
+  templateUrl: './employee-form.component.html',
+  styleUrls: ['./employee-form.component.scss']
 })
 export class ListingFormComponent implements OnChanges {
   employeeForm: FormGroup;
-  @Output() submitValue: EventEmitter<any>  = new EventEmitter<any>();
+  @Output() submitValue: EventEmitter<any> = new EventEmitter<any>();
   @Output() cancel: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Input() buttonSubmitName: string;
   @Input() formValue: any;
@@ -23,7 +24,7 @@ export class ListingFormComponent implements OnChanges {
       'id': '',
       'status': ['', [Validators.required]],
       'employee_name': ['', [Validators.required]],
-      'employee_experiance': ['', [Validators.required]],
+      'employee_experiance': ['', [Validators.required, customValidator.lengthFormat]],
       'employee_designation': ['', [Validators.required]]
     });
   }

@@ -14,4 +14,11 @@ export class customValidator {
         }
         return null;
     }
+
+    static lengthFormat(control: AbstractControl): ValidationErrors | null {
+        if (control.value > 40) {
+            return { lengthFormat: true };
+        }
+        return null;
+    }
 }
