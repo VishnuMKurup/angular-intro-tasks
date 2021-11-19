@@ -20,19 +20,19 @@ export class EmployeeListingComponent {
   params: HttpParams;
 
   constructor(private crud: CrudService) {
-    this.params= new HttpParams();
+    this.params = new HttpParams();
     this.employeeListingArray = [];
     this.getEmployees(this.params);
   }
 
   getEmployees(params) {
-      this.crud.getEmployeeList(params).subscribe(data => {
-        this.employeeListingArray = data;
-      }, error => {
-        console.error('error caught in component');
-        this.errorMessage = error;
-        throw error;
-      });
+    this.crud.getEmployeeList(params).subscribe(data => {
+      this.employeeListingArray = data;
+    }, error => {
+      console.error('error caught in component');
+      this.errorMessage = error;
+      throw error;
+    });
   }
 
   onEditEmployee(item) {
@@ -112,10 +112,10 @@ export class EmployeeListingComponent {
 
   onStatusSelected(val) {
     this.params = this.params.delete('status');
-    if (val!=='Select Status') {
+    if (val !== 'Select Status') {
       this.params = this.params.append('status', val);
-   }
+    }
     this.getEmployees(this.params);
-}
+  }
 
 }
