@@ -9,7 +9,6 @@ import { CrudService } from '../services/crud.service';
 })
 export class EmployeeListingComponent {
   employeeListingArray: any = [];
-  employeeDetails: any = {};
   popupTitle: string
   submitButtonName: string;
   selectedItem: any;
@@ -21,13 +20,13 @@ export class EmployeeListingComponent {
   params: HttpParams;
 
   constructor(private crud: CrudService) {
+    this.params= new HttpParams();
     this.employeeListingArray = [];
-    let params = '';
-    this.getEmployees(params);
+    this.getEmployees(this.params);
   }
 
   getEmployees(params) {
-      this.crud.getEmployee(params).subscribe(data => {
+      this.crud.getEmployeeList(params).subscribe(data => {
         this.employeeListingArray = data;
       }, error => {
         console.error('error caught in component');
@@ -49,18 +48,9 @@ export class EmployeeListingComponent {
     this.selectedIndex = index;
   }
 
-  onViewEmployee(index) {
+  onViewEmployee(item) {
     this.isGetEmployeeOpen = true;
-    this.selectedIndex = index.id;
-    this.crud.getEmployeeById(this.selectedIndex).subscribe(data => {
-      this.employeeDetails = data;
-      console.log(this.employeeDetails);
-      console.log(data);
-    }, error => {
-      console.error('error caught in component');
-      this.errorMessage = error;
-      throw error;
-    });
+    this.selectedIndex = item.id;
   }
 
   onAddEmployee() {
@@ -121,12 +111,11 @@ export class EmployeeListingComponent {
   }
 
   onStatusSelected(val) {
-    console.log(val);
-    if (val==='Select Status') {
-      this.getEmployees(this.params);
-    }
-    let params = new HttpParams().append('status', val);
-    this.getEmployees(params);
-  }
+    this.params = this.params.delete('status');
+    if (val!=='Select Status') {
+      this.params = this.params.append('status', val);
+   }
+    this.getEmployees(this.params);
+}
 
 }

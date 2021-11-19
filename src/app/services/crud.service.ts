@@ -20,7 +20,7 @@ export class CrudService {
     );
   }
 
-  getEmployee(params) {
+  getEmployeeList(params) {
     return this.http.get(this.employeeUrl,{params}).pipe(
       catchError(this.handleError)
     );

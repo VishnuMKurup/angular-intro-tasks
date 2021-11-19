@@ -21,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { EmployeeFormComponent } from './test-api-form/test-api-form.component';
 import { EmployeeListingComponent } from './employee-listing/employee-listing.component';
 import { ListingFormComponent } from './employee-listing/employee-form/employee-form.component';
+import { EmployeeViewComponent } from './employee-listing/employee-view/employee-view.component';
 @NgModule({
   imports: [
     BrowserModule,
@@ -46,7 +47,8 @@ import { ListingFormComponent } from './employee-listing/employee-form/employee-
     UserFormComponent,
     EmployeeFormComponent,
     EmployeeListingComponent,
-    ListingFormComponent],
+    ListingFormComponent,
+    EmployeeViewComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

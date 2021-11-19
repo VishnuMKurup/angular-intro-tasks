@@ -19,7 +19,7 @@
       <tr>
         <th>Employee Name</th>
         <th>Status</th>
-        <th>Employee Experience</th>
+        <th class="th" >Employee Experience</th>
         <th>Employee Designation</th>
         <th>Actions</th>
       </tr>
@@ -28,7 +28,7 @@
       <tr *ngFor="let row of employeeListingArray; let i=index">
         <td>{{row.employee_name}}</td>
         <td>{{row.status === 'true' ? 'Active' : 'Inactive'}}</td>
-        <td>{{row.employee_experiance}}</td>
+        <td class="th">{{row.employee_experiance}}</td>
         <td>{{row.employee_designation}}</td>
         <td>
           <i class="fa fa-eye" aria-hidden="true" (click)="onViewEmployee(row)"></i>
@@ -77,20 +77,7 @@
         <h4 class="modal-title">Employee By Id</h4>
       </div>
       <div class="modal-body">
-        <div class="row">
-          <div class="col-md-6 mb-2">
-            <label>Employee Name: {{employeeDetails.employee_name}}</label>
-          </div>
-          <label>Status: {{employeeDetails.status ? 'Active' : 'Inactive'}}</label>
-        </div>
-        <div class="row">
-          <div class="col-md-6 mb-2">
-            <label>Employee Experience: {{employeeDetails.employee_experiance}}</label>
-          </div>
-          <label>Employee Designation: {{employeeDetails.employee_designation}}</label>
-        </div>
-        <button class="btn btn-danger" (click)="closeEmployeeById()">Cancel</button>
+        <app-employee-view [selectedIndex]="selectedIndex" (cancel)="closeEmployeeById()"></app-employee-view>
       </div>
     </div>
   </div>
-</div>
