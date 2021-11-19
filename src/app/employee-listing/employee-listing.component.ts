@@ -122,6 +122,9 @@ export class EmployeeListingComponent {
 
   onStatusSelected(val) {
     console.log(val);
+    if (val==='Select Status') {
+      this.getEmployees(this.params);
+    }
     let params = new HttpParams().append('status', val);
     this.getEmployees(params);
   }

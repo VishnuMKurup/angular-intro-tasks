@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -14,7 +14,7 @@ export class CrudService {
 
   constructor(private http: HttpClient) { }
 
-  getData() {//get country and state list from countryStateList Url
+  getData() {
     return this.http.get(this.countryStateListUrl).pipe(
       catchError(this.handleError)
     );
@@ -26,31 +26,31 @@ export class CrudService {
     );
   }
 
-  postEmployee(data: any) {// post data to employeeUrl
+  postEmployee(data: any) {
     return this.http.post(this.employeeUrl, data).pipe(
       catchError(this.handleError)
     );
   }
 
-  editEmployee(id: number, data: any) {// update data
+  editEmployee(id: number, data: any) {
     return this.http.put(`${this.employeeUrl}/${id}`, data).pipe(
       catchError(this.handleError)
     );
   }
 
-  deleteEmployee(id: number) {// delete data
+  deleteEmployee(id: number) {
     return this.http.delete(`${this.employeeUrl}/${id}`).pipe(
       catchError(this.handleError)
     );
   }
 
-  postData(data: any) {// post data to usersUrl
+  postData(data: any) {
     return this.http.post(this.usersUrl, data).pipe(
       catchError(this.handleError)
     );
   }
 
-  editData(data: any) {// edit data
+  editData(data: any) {
     return this.http.put(this.updateUrl, data).pipe(
       catchError(this.handleError)
     );
