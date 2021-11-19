@@ -1,3 +1,4 @@
+import { HttpParams } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { CrudService } from '../services/crud.service';
 
@@ -14,23 +15,25 @@ export class EmployeeListingComponent {
   selectedItem: any;
   isEmployeeFormOpen: boolean;
   isConfirmationOpen: boolean;
-  isEmployeeOpen: boolean;
+  isGetEmployeeOpen: boolean;
   selectedIndex: number;
   errorMessage: any;
+  params: HttpParams;
 
   constructor(private crud: CrudService) {
     this.employeeListingArray = [];
-    this.getEmployees();
+    let params = '';
+    this.getEmployees(params);
   }
 
-  getEmployees() {
-    this.crud.getEmployee().subscribe(data => {
-      this.employeeListingArray = data;
-    }, error => {
-      console.error('error caught in component');
-      this.errorMessage = error;
-      throw error;
-    });
+  getEmployees(params) {
+      this.crud.getEmployee(params).subscribe(data => {
+        this.employeeListingArray = data;
+      }, error => {
+        console.error('error caught in component');
+        this.errorMessage = error;
+        throw error;
+      });
   }
 
   onEditEmployee(item) {
@@ -47,7 +50,7 @@ export class EmployeeListingComponent {
   }
 
   onViewEmployee(index) {
-    this.isEmployeeOpen = true;
+    this.isGetEmployeeOpen = true;
     this.selectedIndex = index.id;
     this.crud.getEmployeeById(this.selectedIndex).subscribe(data => {
       this.employeeDetails = data;
@@ -72,14 +75,14 @@ export class EmployeeListingComponent {
   }
 
   closeEmployeeById() {
-    this.isEmployeeOpen = false;
+    this.isGetEmployeeOpen = false;
   }
 
   onSubmit(value) {
     if (this.selectedItem) {
       console.log(value);
       this.crud.editEmployee(this.selectedIndex, value).subscribe(result => {
-        this.getEmployees();
+        this.getEmployees(this.params);
         console.warn('result', result);
       }, error => {
         console.error('error caught in component');
@@ -90,7 +93,7 @@ export class EmployeeListingComponent {
     }
     else {
       this.crud.postEmployee(value).subscribe(result => {
-        this.getEmployees();
+        this.getEmployees(this.params);
         console.warn('result', result);
       }, error => {
         console.error('error caught in component');
@@ -103,7 +106,7 @@ export class EmployeeListingComponent {
 
   confirmSucess() {
     this.crud.deleteEmployee(this.selectedIndex).subscribe(result => {
-      this.getEmployees();
+      this.getEmployees(this.params);
       console.warn('result', result);
     }, error => {
       console.error('error caught in component');
@@ -117,8 +120,10 @@ export class EmployeeListingComponent {
     this.isConfirmationOpen = false;
   }
 
-  onFilter() {
-    console.log('hi');
+  onStatusSelected(val) {
+    console.log(val);
+    let params = new HttpParams().append('status', val);
+    this.getEmployees(params);
   }
 
 }

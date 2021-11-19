@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -20,43 +20,37 @@ export class CrudService {
     );
   }
 
-  getEmployee() {//get country and state list from countryStateList Url
-    return this.http.get(this.employeeUrl).pipe(
+  getEmployee(params) {
+    return this.http.get(this.employeeUrl,{params}).pipe(
       catchError(this.handleError)
     );
   }
 
-  filterEmployee() {
-    return this.http.get(`${this.employeeUrl}?$status=true`).pipe(
-      catchError(this.handleError)
-    );
-  }
-
-  postEmployee(data) {// post data to usersUrl
+  postEmployee(data: any) {// post data to employeeUrl
     return this.http.post(this.employeeUrl, data).pipe(
       catchError(this.handleError)
     );
   }
 
-  editEmployee(id, data) {// update data
+  editEmployee(id: number, data: any) {// update data
     return this.http.put(`${this.employeeUrl}/${id}`, data).pipe(
       catchError(this.handleError)
     );
   }
 
-  deleteEmployee(id) {// delete data
+  deleteEmployee(id: number) {// delete data
     return this.http.delete(`${this.employeeUrl}/${id}`).pipe(
       catchError(this.handleError)
     );
   }
 
-  postData(data) {// post data to usersUrl
+  postData(data: any) {// post data to usersUrl
     return this.http.post(this.usersUrl, data).pipe(
       catchError(this.handleError)
     );
   }
 
-  editData(data) {// edit data
+  editData(data: any) {// edit data
     return this.http.put(this.updateUrl, data).pipe(
       catchError(this.handleError)
     );
@@ -76,4 +70,5 @@ export class CrudService {
     }
     return throwError('Something bad happened. Please try again later.');
   }
+
 }

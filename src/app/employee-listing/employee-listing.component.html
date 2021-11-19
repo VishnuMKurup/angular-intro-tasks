@@ -6,6 +6,11 @@
       </div>
       <ul class="nav navbar-nav navbar-right ">
         <button type="button" (click)="onAddEmployee()">Add Employee</button>
+        <select (change)="onStatusSelected($event.target.value)">
+          <option>Select Status</option>
+          <option [value]="true">Active</option>
+          <option [value]="false">Inactive</option>
+        </select>
       </ul>
     </div>
   </nav>
@@ -65,7 +70,7 @@
     </div>
   </div>
 </div>
-<div class="modal d-block" tabindex="-1" role="dialog" *ngIf="isEmployeeOpen">
+<div class="modal d-block" tabindex="-1" role="dialog" *ngIf="isGetEmployeeOpen">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
