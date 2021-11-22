@@ -16,10 +16,10 @@ export class ListingFormComponent implements OnChanges {
   submitted: boolean;
 
   constructor(private fb: FormBuilder) {
-    this.initEmployeekForm();
+    this.initEmployeeForm();
   }
 
-  initEmployeekForm() {
+  initEmployeeForm() {
     this.employeeForm = this.fb.group({
       'id': '',
       'status': ['', [Validators.required]],

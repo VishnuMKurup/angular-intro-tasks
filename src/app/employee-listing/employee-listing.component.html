@@ -31,14 +31,14 @@
         <td class="th">{{row.employee_experiance}}</td>
         <td>{{row.employee_designation}}</td>
         <td>
-          <i class="fa fa-eye" aria-hidden="true" (click)="onViewEmployee(row)"></i>
+          <i class="fa fa-eye" aria-hidden="true" (click)="onViewEmployee(row.id)"></i>
           <i class="fa fa-pencil yellow-color ml-3" (click)="onEditEmployee(row)"></i>
           <i class="fa fa-trash ml-3 red-color" (click)="removeItem(row.id)"></i>
         </td>
       </tr>
     </tbody>
   </table>
-  <div class="modal d-block" tabindex="-1" role="dialog" *ngIf="isEmployeeFormOpen">
+  <div class="modal d-block" tabindex="-1" role="dialog" *ngIf="isEmployeeDetailsOpen">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -47,37 +47,21 @@
         </div>
         <div class="modal-body">
           <app-employee-form (submitValue)="onSubmit($event)" (cancel)="closePopup()"
-            [buttonSubmitName]="submitButtonName" [formValue]="selectedItem">
+            [buttonSubmitName]="submitButtonName" [formValue]="selectedEmployeeDetails">
           </app-employee-form>
         </div>
       </div>
     </div>
   </div>
 </div>
-<div class="modal d-block" tabindex="-1" role="dialog" *ngIf="isConfirmationOpen">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Confirmation</h4>
-      </div>
-      <div class="modal-body">
-        <p>
-          Are You Sure you want to delete
-        </p>
-        <button class="btn btn-primary" (click)="confirmSucess(i)">Confirm</button>
-        <button class="btn btn-danger ml-2" (click)="closeConfirmation()">Cancel</button>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="modal d-block" tabindex="-1" role="dialog" *ngIf="isGetEmployeeOpen">
+<div class="modal d-block" tabindex="-1" role="dialog" *ngIf="isEmployeeViewOpen">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title">Employee By Id</h4>
       </div>
       <div class="modal-body">
-        <app-employee-view [selectedIndex]="selectedIndex" (cancel)="closeEmployeeById()"></app-employee-view>
+        <app-employee-view [selectedIndex]="selectedEmployeeId" (cancel)="closePopup()"></app-employee-view>
       </div>
     </div>
   </div>

@@ -11,11 +11,11 @@ export class EmployeeListingComponent {
   employeeListingArray: any = [];
   popupTitle: string
   submitButtonName: string;
-  selectedItem: any;
-  isEmployeeFormOpen: boolean;
+  selectedEmployeeDetails: any;
+  isEmployeeDetailsOpen: boolean;
   isConfirmationOpen: boolean;
-  isGetEmployeeOpen: boolean;
-  selectedIndex: number;
+  isEmployeeViewOpen: boolean;
+  selectedEmployeeId: number;
   errorMessage: any;
   params: HttpParams;
 
@@ -38,40 +38,45 @@ export class EmployeeListingComponent {
   onEditEmployee(item) {
     this.popupTitle = 'Update Employee';
     this.submitButtonName = 'Update';
-    this.selectedItem = item;
-    this.selectedIndex = item.id;
-    this.isEmployeeFormOpen = true;
+    this.selectedEmployeeDetails = item;
+    this.selectedEmployeeId = item.id;
+    this.isEmployeeDetailsOpen = true;
   }
 
-  removeItem(index: number) {
-    this.isConfirmationOpen = true;
-    this.selectedIndex = index;
+  removeItem(id: number) {
+    if (confirm('Are You Sure You Want To Delete')) {
+      this.crud.deleteEmployee(id).subscribe(result => {
+        this.getEmployees(this.params);
+        console.warn('result', result);
+      }, error => {
+        console.error('error caught in component');
+        this.errorMessage = error;
+        throw error;
+      });
+    }
   }
 
-  onViewEmployee(item) {
-    this.isGetEmployeeOpen = true;
-    this.selectedIndex = item.id;
+  onViewEmployee(id) {
+    this.isEmployeeViewOpen = true;
+    this.selectedEmployeeId = id;
   }
 
   onAddEmployee() {
     this.popupTitle = 'Add Employee';
     this.submitButtonName = 'Add';
-    this.isEmployeeFormOpen = true;
-    this.selectedItem = null;
+    this.isEmployeeDetailsOpen = true;
+    this.selectedEmployeeDetails = null;
   }
 
   closePopup() {
-    this.isEmployeeFormOpen = false;
-  }
-
-  closeEmployeeById() {
-    this.isGetEmployeeOpen = false;
+    this.isEmployeeDetailsOpen = false;
+    this.isEmployeeViewOpen = false;
   }
 
   onSubmit(value) {
-    if (this.selectedItem) {
+    if (this.selectedEmployeeDetails) {
       console.log(value);
-      this.crud.editEmployee(this.selectedIndex, value).subscribe(result => {
+      this.crud.editEmployee(this.selectedEmployeeId, value).subscribe(result => {
         this.getEmployees(this.params);
         console.warn('result', result);
       }, error => {
@@ -92,22 +97,6 @@ export class EmployeeListingComponent {
       });
       this.closePopup();
     }
-  }
-
-  confirmSucess() {
-    this.crud.deleteEmployee(this.selectedIndex).subscribe(result => {
-      this.getEmployees(this.params);
-      console.warn('result', result);
-    }, error => {
-      console.error('error caught in component');
-      this.errorMessage = error;
-      throw error;
-    });
-    this.isConfirmationOpen = false;
-  }
-
-  closeConfirmation() {
-    this.isConfirmationOpen = false;
   }
 
   onStatusSelected(val) {
