@@ -9,6 +9,7 @@ import { ShippingComponent } from './shipping/shipping.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { EmployeeFormComponent } from './test-api-form/test-api-form.component';
 import { EmployeeListingComponent } from './employee-listing/employee-listing.component';
+import { ViewEmployeeComponent } from './employee-listing/view-employee/view-employee.component';
 
 const routes: Routes = [
   {
@@ -17,7 +18,16 @@ const routes: Routes = [
   },
   {
     path: 'employeelisting',
-    component: EmployeeListingComponent
+    children: [
+      {
+        path: '',
+        component: EmployeeListingComponent
+      },
+      {
+        path: ':id',
+        component: ViewEmployeeComponent
+      }
+    ]
   },
   {
     path: 'employee',
@@ -53,4 +63,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

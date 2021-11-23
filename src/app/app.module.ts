@@ -22,6 +22,7 @@ import { EmployeeFormComponent } from './test-api-form/test-api-form.component';
 import { EmployeeListingComponent } from './employee-listing/employee-listing.component';
 import { ListingFormComponent } from './employee-listing/employee-form/employee-form.component';
 import { EmployeeViewComponent } from './employee-listing/employee-view/employee-view.component';
+import { ViewEmployeeComponent } from './employee-listing/view-employee/view-employee.component';
 @NgModule({
   imports: [
     BrowserModule,
@@ -48,7 +49,8 @@ import { EmployeeViewComponent } from './employee-listing/employee-view/employee
     EmployeeFormComponent,
     EmployeeListingComponent,
     ListingFormComponent,
-    EmployeeViewComponent],
+    EmployeeViewComponent,
+    ViewEmployeeComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

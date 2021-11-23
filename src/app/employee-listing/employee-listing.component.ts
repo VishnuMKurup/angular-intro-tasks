@@ -1,5 +1,6 @@
 import { HttpParams } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { CrudService } from '../services/crud.service';
 
 @Component({
@@ -18,8 +19,9 @@ export class EmployeeListingComponent {
   selectedEmployeeId: number;
   errorMessage: any;
   params: HttpParams;
+  isViewOpen: boolean;
 
-  constructor(private crud: CrudService) {
+  constructor(private crud: CrudService,private router: Router) {
     this.params = new HttpParams();
     this.employeeListingArray = [];
     this.getEmployees(this.params);
