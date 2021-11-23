@@ -22,7 +22,6 @@ export class EmployeeViewComponent implements OnChanges {
   onViewEmployee(id) {
     this.crud.getEmployeeById(id).subscribe(result => {
       this.employeeDetails = result;
-      console.warn('result', result);
     }, error => {
       console.error('error caught in component');
       this.errorMessage = error;

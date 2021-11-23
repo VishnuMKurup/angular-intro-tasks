@@ -49,7 +49,6 @@ export class EmployeeListingComponent {
     if (confirm('Are You Sure You Want To Delete')) {
       this.crud.deleteEmployee(id).subscribe(result => {
         this.getEmployees(this.params);
-        console.warn('result', result);
       }, error => {
         console.error('error caught in component');
         this.errorMessage = error;
@@ -80,7 +79,6 @@ export class EmployeeListingComponent {
       console.log(value);
       this.crud.editEmployee(this.selectedEmployeeId, value).subscribe(result => {
         this.getEmployees(this.params);
-        console.warn('result', result);
       }, error => {
         console.error('error caught in component');
         this.errorMessage = error;
@@ -91,7 +89,6 @@ export class EmployeeListingComponent {
     else {
       this.crud.postEmployee(value).subscribe(result => {
         this.getEmployees(this.params);
-        console.warn('result', result);
       }, error => {
         console.error('error caught in component');
         this.errorMessage = error;

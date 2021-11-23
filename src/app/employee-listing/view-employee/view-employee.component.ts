@@ -12,13 +12,12 @@ export class ViewEmployeeComponent {
   errorMessage: any;
 
   constructor(private crud: CrudService, private route: ActivatedRoute, private router: Router) {
-    this.onViewEmployee(this.route.snapshot.paramMap.get('id'));
+    this.getEmployeeDetails(this.route.snapshot.paramMap.get('id'));
   }
 
-  onViewEmployee(id) {
+  getEmployeeDetails(id) {
     this.crud.getEmployeeById(id).subscribe(result => {
       this.employeeDetails = result;
-      console.warn('result', result);
     }, error => {
       console.error('error caught in component');
       this.errorMessage = error;
@@ -26,7 +25,7 @@ export class ViewEmployeeComponent {
     });
   }
 
-  onSubmit() {
+  goToPreviousPage() {
     this.router.navigate(['/employeelisting']);
   }
 
