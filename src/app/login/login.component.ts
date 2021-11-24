@@ -15,7 +15,7 @@ export class LoginComponent {
   errorMessage: any;
 
 
-  constructor(private fb: FormBuilder,private auth: AuthService) {
+  constructor(private fb: FormBuilder, private auth: AuthService) {
     this.initLoginForm();
   }
 
@@ -26,21 +26,19 @@ export class LoginComponent {
     });
   }
 
-
-
   submit() {
     this.submitted = true;
     if (this.loginForm.valid) {
       console.log(this.loginForm.value);
       const creds = 'grant_type=password&password='
-      + encodeURIComponent(this.loginForm.value['password']) + '&username=' + encodeURIComponent(this.loginForm.value['email']);
-        console.log(creds);
-        this.auth.onLogin(creds).subscribe(data => {
-        }, error => {
-          console.error('error caught in component');
-          this.errorMessage = error;
-          throw error;
-        });
+        + encodeURIComponent(this.loginForm.value['password']) + '&username=' + encodeURIComponent(this.loginForm.value['email']);
+      console.log(creds);
+      this.auth.onLogin(creds).subscribe(data => {
+      }, error => {
+        console.error('error caught in component');
+        this.errorMessage = error;
+        throw error;
+      });
     }
   }
 

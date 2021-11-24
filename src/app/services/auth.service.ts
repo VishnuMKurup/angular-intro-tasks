@@ -8,7 +8,6 @@ export class AuthService {
   clientId = 'fU3kkI1Zc1gwGcs97b7dQYHzgeBS3THBKwKevZvh';
   secret = 'UuGGXMv2qC4ebKyKySRYoy1ITJd1eOn5EYXOaq6CmOuAUvcAUHeJp2sv1wTZfZGWxSVqfoQ1pwwgNGgX4UFmy0JfM814Rsppw4LPhrywAhlegmLU2xdakonFr1kfabXh';
   authUrl = 'https://pod1.salesonepro.com:8005/signin//token/';
-  headers: any;
 
   constructor(private http: HttpClient) { }
 
