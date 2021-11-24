@@ -10,10 +10,15 @@ import { UserFormComponent } from './user-form/user-form.component';
 import { EmployeeFormComponent } from './test-api-form/test-api-form.component';
 import { EmployeeListingComponent } from './employee-listing/employee-listing.component';
 import { ViewEmployeeComponent } from './employee-listing/view-employee/view-employee.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
     path: '',
+    component: LoginComponent
+  },
+  {
+    path: 'task',
     component: TaskListingComponent
   },
   {

@@ -23,6 +23,7 @@ import { EmployeeListingComponent } from './employee-listing/employee-listing.co
 import { ListingFormComponent } from './employee-listing/employee-form/employee-form.component';
 import { EmployeeViewComponent } from './employee-listing/employee-view/employee-view.component';
 import { ViewEmployeeComponent } from './employee-listing/view-employee/view-employee.component';
+import { LoginComponent } from './login/login.component';
 @NgModule({
   imports: [
     BrowserModule,
@@ -50,7 +51,8 @@ import { ViewEmployeeComponent } from './employee-listing/view-employee/view-emp
     EmployeeListingComponent,
     ListingFormComponent,
     EmployeeViewComponent,
-    ViewEmployeeComponent],
+    ViewEmployeeComponent,
+    LoginComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
