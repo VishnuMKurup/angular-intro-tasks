@@ -11,15 +11,23 @@ import { EmployeeFormComponent } from './test-api-form/test-api-form.component';
 import { EmployeeListingComponent } from './employee-listing/employee-listing.component';
 import { ViewEmployeeComponent } from './employee-listing/view-employee/view-employee.component';
 import { LoginComponent } from './login/login.component';
+import { AuthGuardService as AuthGuard} from './services/auth-guard.service';
+
 
 const routes: Routes = [
   {
     path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
+  },
+  {
+    path: 'login',
     component: LoginComponent
   },
   {
     path: 'task',
-    component: TaskListingComponent
+    component: TaskListingComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'employeelisting',
