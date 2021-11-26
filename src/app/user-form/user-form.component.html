@@ -1,4 +1,4 @@
-<div class="container"  style = "position:absolute; left:200px; top:100px;">
+<div class="container" style="position:absolute; left:200px; top:100px;">
     <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
         <div class="row">
             <div class="col-md-6 mb-2">
@@ -14,7 +14,8 @@
         </div>
         <div class="row">
             <div class="col-md-6 mb-2">
-                <input type="text" id="city" placeholder="City*" class="form-control" formControlName="city" [appValidation]="submitted">
+                <input type="text" id="city" placeholder="City*" class="form-control" formControlName="city"
+                    [appValidation]="submitted">
                 <app-validation [submitted]="submitted" name="City" [control]="userForm.get('city')">
                 </app-validation>
             </div>
