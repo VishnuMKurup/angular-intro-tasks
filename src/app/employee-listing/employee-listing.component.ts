@@ -85,8 +85,7 @@ export class EmployeeListingComponent {
         throw error;
       });
       this.closePopup();
-    }
-    else {
+    } else {
       this.crud.postEmployee(value).subscribe(result => {
         this.getEmployees(this.params);
       }, error => {
