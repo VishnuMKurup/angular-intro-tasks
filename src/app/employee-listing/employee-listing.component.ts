@@ -21,7 +21,7 @@ export class EmployeeListingComponent {
   params: HttpParams;
   isViewOpen: boolean;
 
-  constructor(private crud: CrudService,private router: Router) {
+  constructor(private crud: CrudService, private router: Router) {
     this.params = new HttpParams();
     this.employeeListingArray = [];
     this.getEmployees(this.params);

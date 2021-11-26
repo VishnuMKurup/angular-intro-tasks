@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements AfterViewChecked {
   isLogIn: boolean;
 
-  constructor(private router: Router,private location: LocationStrategy) { }
+  constructor(private router: Router, private location: LocationStrategy) { }
 
   ngAfterViewChecked() {
     if (this.location.path().includes('/login')) {
@@ -24,4 +24,5 @@ export class HeaderComponent implements AfterViewChecked {
     sessionStorage.removeItem('refresh_token');
     this.router.navigate(['']);
   }
+
 }
