@@ -26,7 +26,7 @@ export class ViewEmployeeComponent {
   }
 
   goToPreviousPage() {
-    this.router.navigate(['/employeelisting']);
+    this.router.navigate(['/task/employeelisting']);
   }
 
 }

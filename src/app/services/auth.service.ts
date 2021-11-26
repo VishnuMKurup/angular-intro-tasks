@@ -23,7 +23,7 @@ export class AuthService {
   }
 
   public isAuthenticated(): boolean {
-    const token = localStorage.getItem('refresh_token');
+    const token = sessionStorage.getItem('refresh_token');
     if (token) {
       return true;
     } else {

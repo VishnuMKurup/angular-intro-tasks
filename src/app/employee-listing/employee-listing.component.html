@@ -34,7 +34,7 @@
           <i class="fa fa-eye" aria-hidden="true" (click)="onViewEmployee(row.id)"></i>
           <i class="fa fa-pencil yellow-color ml-3" (click)="onEditEmployee(row)"></i>
           <i class="fa fa-trash ml-3 red-color" (click)="removeItem(row.id)"></i>
-          <a  routerLink='/employeelisting/{{row.id}}' routerLinkActive="active"> View</a>
+          <a  routerLink='/task/employeelisting/{{row.id}}' routerLinkActive="active"> View</a>
         </td>
       </tr>
     </tbody>

@@ -34,7 +34,7 @@ export class LoginComponent {
       const creds = 'grant_type=password&password='
         + encodeURIComponent(this.loginForm.value['password']) + '&username=' + encodeURIComponent(this.loginForm.value['email']);
       this.auth.onLogin(creds).subscribe(data => {
-        localStorage.setItem('refresh_token', data['refresh_token']);
+       sessionStorage.setItem('refresh_token', data['refresh_token']);
         this.router.navigate(['/task']);
       }, error => {
         console.error('error caught in component');

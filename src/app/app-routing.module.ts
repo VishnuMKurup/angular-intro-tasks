@@ -26,50 +26,55 @@ const routes: Routes = [
   },
   {
     path: 'task',
-    component: TaskListingComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'employeelisting',
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
-        component: EmployeeListingComponent
+        component: TaskListingComponent
       },
       {
-        path: ':id',
-        component: ViewEmployeeComponent
+        path: 'address',
+        component: AddressComponent
+      },
+      {
+        path: 'custom',
+        component: CustomValidatorComponent
+      },
+      {
+        path: 'display',
+        component: DisplayBookComponent,
+      },
+      {
+        path: 'user',
+        component: UserFormComponent
+      },
+      {
+        path: 'employee',
+        component: EmployeeFormComponent
+      },
+      {
+        path: 'shipping',
+        component: ShippingComponent
+      },
+      {
+        path: 'contact',
+        component: ContactFormComponent
+      },
+      {
+        path: 'employeelisting',
+        children: [
+          {
+            path: '',
+            component: EmployeeListingComponent
+          },
+          {
+            path: ':id',
+            component: ViewEmployeeComponent
+          }
+        ]
       }
     ]
   },
-  {
-    path: 'employee',
-    component: EmployeeFormComponent
-  },
-  {
-    path: 'shipping',
-    component: ShippingComponent
-  },
-  {
-    path: 'contact',
-    component: ContactFormComponent
-  },
-  {
-    path: 'address',
-    component: AddressComponent
-  },
-  {
-    path: 'custom',
-    component: CustomValidatorComponent
-  },
-  {
-    path: 'display',
-    component: DisplayBookComponent
-  },
-  {
-    path: 'user',
-    component: UserFormComponent
-  }
 ];
 
 @NgModule({

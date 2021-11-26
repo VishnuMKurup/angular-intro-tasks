@@ -24,6 +24,7 @@ import { ListingFormComponent } from './employee-listing/employee-form/employee-
 import { EmployeeViewComponent } from './employee-listing/employee-view/employee-view.component';
 import { ViewEmployeeComponent } from './employee-listing/view-employee/view-employee.component';
 import { LoginComponent } from './login/login.component';
+import { HeaderComponent } from './header/header.component';
 @NgModule({
   imports: [
     BrowserModule,
@@ -52,7 +53,8 @@ import { LoginComponent } from './login/login.component';
     ListingFormComponent,
     EmployeeViewComponent,
     ViewEmployeeComponent,
-    LoginComponent],
+    LoginComponent,
+    HeaderComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
