@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" *ngIf="!isLogIn">
+<nav class="navbar navbar-expand-lg navbar-dark bg-info" *ngIf="router.url !== '/login'">
     <p class="navbar-brand">Angular Routing</p>
-    <button type="button" (click)="onLogOut()">Log Out</button>
+    <button type="button" class="ml-auto glow-button button" (click)="onLogOut()">Log Out</button>
 </nav>
